@@ -1,6 +1,6 @@
 {
   "name": "em-client-lib",
-  "version": "1.0.0-alpha.1",
+  "version": "0.1.1",
   "description": "An example app for development of frontend library",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js --colors",
