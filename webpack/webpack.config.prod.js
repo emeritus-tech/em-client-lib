@@ -8,9 +8,11 @@ module.exports = merge(common, {
   devtool: 'source-map',
   stats: 'errors-only',
   bail: true,
-  output: {// We don't need chunkhashes here because it is a library
+  output: {
     filename: 'js/[name].js',
-    chunkFilename: 'js/[name].chunk.js'
+    chunkFilename: 'js/[name].chunk.js',
+    libraryTarget: 'umd',
+    library: 'EMClientLib',
   },
   plugins: [
     new Webpack.DefinePlugin({
