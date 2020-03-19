@@ -1,6 +1,6 @@
 {
   "name": "em-client-lib",
-  "version": "1.0.0-alpha.1",
+  "version": "0.1.0",
   "description": "An example app for development of frontend library",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js --colors",
@@ -52,11 +52,10 @@
     "core-js": "^3.6.4"
   },
   "files": [
-    "dist/{css,js}/*.{css,js,map}",
-    "js/{src,dist}/**/*.{js,map}",
-    "styles/**/*.scss"
+    "dist/{css,js,scss}/*.{css,js,map,scss}",
+    "src/styles/**/*.scss"
   ],
   "main": "dist/js/em-client-lib.js",
-  "sass": "styles/em-client-lib.scss",
+  "sass": "src/styles/index.scss",
   "style": "dist/css/em-client-lib.css"
 }
