@@ -1,0 +1,22 @@
+.money-back-guarantee {
+  background-color: $em-color-primary-light;
+  padding: 0 2rem;
+
+  &__icon {
+    height: 6rem;
+    margin-top: -.3rem;
+    width: 4.5rem;
+  }
+
+  &__heading {
+    font-size: 1.8rem;
+    line-height: 1.38;
+  }
+
+  &__text {
+    color: $em-color-gray-800;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    padding: 1.2rem 0 1.2rem 2rem;
+  }
+}

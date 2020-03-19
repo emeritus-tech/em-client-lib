@@ -1,0 +1,6 @@
+/* -------------------------------------------------------
+  Custom Modal colors for Digital Strategies Landing Page
+--------------------------------------------------------- */
+.modal {
+  &--large [class*="__close"]::before { color: marketing-colors(columbia-business-school-executive-education, primary); }
+}

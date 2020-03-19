@@ -1,0 +1,334 @@
+form {
+  @include clearfix;
+
+  @media screen and (min-width: 480px) {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+
+  > * { width: 100%; }
+
+  .form-group:not(.boolean) {
+    @include floating-labels;
+
+    @media screen and (min-width: 480px) { width: 47%; }
+
+    &.form-group-invalid {
+      padding-bottom: 2rem;
+
+      .form-control-label::before { margin-top: -1.2rem; }
+    }
+  }
+
+  .form-control {
+    @include autofill($em-color-primary);
+    @include ellipsis;
+    @include appearance(none);
+    @include border-radius(2px);
+    @include x-browser-fallback;
+    background-color: $em-color-light;
+    border: 1px solid $em-color-gray-100;
+    box-shadow: none;
+    color: $em-color-gray-700;
+    cursor: text;
+    display: block;
+    font-family: $em-main-font-family;
+    font-size: 1.6rem;
+    height: 5.5rem;
+    width: 100%;
+
+    /* stylelint-disable selector-class-pattern */
+    &--select,
+    &.select,
+    &.country_select {
+      @include background("icons/emeritus-select-list-arrow.svg", 1.5rem 1.5rem, calc(100% - 1rem) 50%, no-repeat, $transparent);
+      color: inherit;
+      cursor: pointer;
+      padding-right: 3rem;
+    }
+    /* stylelint-enable selector-class-pattern */
+
+    @include pseudo-class(focus) {
+      background: none;
+      border-color: $em-color-gray-100;
+      box-shadow: 0 0 0 2px $em-color-gray-100;
+      outline: none;
+    }
+
+    @include pseudo-class(valid) {
+      background: none;
+
+      &:focus { box-shadow: none; }
+
+      &.filled:not(:focus):not(:disabled):required {
+        border-color: $em-color-success;
+        box-shadow: none;
+
+        + .form-control-label::after { @include transform(scale(1) rotate(42deg) translateY(-50%)); }
+
+        &:invalid {
+          border-color: $em-color-error;
+
+          + .form-control-label::after { @include transform(scale(0) rotate(42deg) translateY(-50%)); }
+        }
+      }
+    }
+
+    /* stylelint-disable selector-no-qualifying-type, selector-max-type */
+    @include pseudo-class(invalid) {
+      background: none;
+
+      &:focus { box-shadow: none; }
+
+      &.filled:not(:focus):not(:disabled):required {
+        border-color: $em-color-error;
+
+        + .form-control-label::before { @include transform(scale(1) translateY(-50%)); }
+
+        &:valid {
+          border-color: $em-color-error;
+
+          + .form-control-label::after { @include transform(scale(0) rotate(42deg) translateY(-50%)); }
+        }
+      }
+    }
+
+    @include pseudo-class(disabled) {
+      background-color: $em-color-gray-100;
+      border-color: $em-color-gray-200;
+      cursor: not-allowed;
+      opacity: .6;
+
+      + .form-control-label {
+        color: $em-color-gray-400;
+
+        &::after,
+        &::before { display: none; }
+
+        span { color: $em-color-gray-400; }
+      }
+    }
+
+    &:not(:required) + label span {
+      font-size: 1.3rem;
+      text-transform: lowercase;
+    }
+
+    &.is-valid {
+      border-color: $em-color-success;
+
+      &:focus { border-color: $em-color-success; }
+
+      + .form-control-label::after { @include transform(scale(1) rotate(42deg) translateY(-50%)); }
+    }
+
+    &.is-invalid {
+      border-color: $em-color-error;
+
+      &:focus { border-color: $em-color-error; }
+
+      + .form-control-label::before { @include transform(scale(1) translateY(-50%)); }
+    }
+    /* stylelint-enable selector-no-qualifying-type, selector-max-type */
+  }
+
+  .form-control-label {
+    text-transform: capitalize;
+
+    &::after,
+    &::before {
+      @include transition(transform $em-transition-fast ease-in-out);
+      @include center-elem(vertical);
+      background: none;
+      content: "";
+      display: block;
+      margin-top: -.3rem;
+      right: -1rem;
+    }
+
+    /* Invalid X icon */
+    &::before {
+      @include transform(scale(0) translateY(-50%));
+      color: $em-form-color-danger;
+      content: "\00D7";
+      font-size: 3rem;
+      font-weight: $em-font-weight-light;
+      line-height: .4;
+      width: 1.2rem;
+    }
+
+    /* Valid √ icon */
+    &::after {
+      @include transform(scale(0) rotate(42deg) translateY(-50%));
+      border: solid $em-color-success;
+      border-width: 0 .2rem .2rem 0;
+      height: 1.4rem;
+      margin-top: -.5rem;
+      transform-origin: 1px 1px;
+      width: .8rem;
+    }
+
+    + .invalid-feedback {
+      color: $em-color-error;
+      position: absolute;
+    }
+  }
+
+  .form-check {
+    position: relative;
+
+    &:hover label::before { border: .4rem solid $em-color-gray-200; }
+
+    > label {
+      @include transition(color $em-transition-normal ease-in-out);
+      align-items: center;
+      color: $em-color-gray-700;
+      cursor: pointer;
+      display: flex;
+      font-size: 1.4rem;
+      margin: 0 0 0 1rem;
+      padding: .75rem 0;
+
+      &::before {
+        @include border-radius(50%);
+        @include multiple-transition(background-color transform border, $em-transition-normal);
+        @include transform(none);
+        background-color: $em-color-light;
+        border: 1px solid $em-color-gray-200;
+        content: "";
+        display: inline-block;
+        height: 1.5rem;
+        left: 0;
+        margin: 0 .5rem 0 0;
+        position: absolute;
+        width: 1.5rem;
+      }
+
+      .simple-form-optional { display: none; }
+    }
+
+    abbr {
+      left: .3rem;
+      top: .2rem;
+    }
+
+    .form-check-input {
+      height: 1px;
+      left: 1px;
+      margin: 0;
+      opacity: 0;
+      position: absolute;
+      top: 1rem;
+      width: 1px;
+
+      @include pseudo-class(valid, focus) {
+        + label { color: $em-color-gray-700; }
+      }
+
+      &[class*="--invalid"] {
+        + label,
+        &:focus + label {
+          color: $em-color-error;
+
+          &::before { border: .4rem solid $em-color-error; }
+        }
+      }
+
+      &:checked {
+        box-shadow: none;
+
+        + label {
+          &::before {
+            background: $em-color-success;
+            border: 1px solid $em-color-success;
+            margin-right: 1rem;
+          }
+
+          &::after { @include transform(scale(1.7) rotate(45deg)); }
+        }
+      }
+    }
+
+    .form-check-label {
+      align-items: baseline;
+      color: $em-color-gray-700;
+
+      &::before {
+        @include border-radius(10%);
+        @include transform(none);
+        margin: .2rem .5rem 0 0;
+      }
+
+      &::after {
+        @include transform(scale(0) rotate(45deg));
+        background: none;
+        border: solid $em-color-light;
+        border-width: 0 .1rem .1rem 0;
+        content: "";
+        height: .55rem;
+        left: 0;
+        margin: 1.3rem .6rem;
+        position: absolute;
+        top: 0;
+        width: .3rem;
+      }
+    }
+  }
+
+  textarea {
+    @include overflow(scroll);
+    min-height: 15rem;
+    padding-top: 2.8rem;
+    white-space: pre;
+
+    @include media-breakpoint-up(lg) { min-height: 10rem; }
+  }
+
+  abbr {
+    font-size: 1.5rem;
+    font-weight: $em-font-weight-semi-bold;
+    line-height: 0;
+    pointer-events: none;
+    position: relative;
+    text-decoration: none;
+    top: .3rem;
+  }
+
+  /* stylelint-disable selector-no-qualifying-type */
+  input[type="submit"] {
+    @include appearance(none);
+    @include button-size(1.5rem, 1rem, 1.6rem, 1.18, 0);
+    @include button-variant($em-color-primary, $em-color-primary);
+    @include multiple-transition(color background-color border-color box-shadow, .15s, ease-in-out);
+    box-shadow: none;
+    display: block;
+    font-size: 1.6rem;
+    font-weight: $em-font-weight-medium;
+    margin: 2rem 0 1rem;
+    padding: 1.15rem .5rem;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: inherit;
+    width: 100%;
+
+    @include media-breakpoint-up(md) {
+      font-size: 1.6rem;
+      padding: 1.15rem;
+    }
+
+    &:focus {
+      box-shadow: none;
+      outline: 0;
+    }
+
+    &:disabled {
+      background-color: $em-color-disabled;
+      border-color: $em-color-disabled;
+      color: $em-color-light;
+      cursor: not-allowed;
+    }
+  }
+  /* stylelint-enable selector-no-qualifying-type */
+}

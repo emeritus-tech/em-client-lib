@@ -1,0 +1,398 @@
+/* -----------------------------
+  Iframe form default styles
+------------------------------ */
+
+/* stylelint-disable selector-no-qualifying-type,
+selector-class-pattern, selector-max-type */
+form {
+  @include border-radius(1rem);
+  background-color: $em-color-light;
+  overflow: hidden;
+  padding: 2rem;
+
+  .invalid-feedback--general {
+    display: block;
+    text-align: center;
+    top: -2.25rem;
+    width: 100%;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    &.hidden { margin-bottom: 0; }
+  }
+
+  label,
+  fieldset {
+    color: $em-color-gray-700;
+    font-size: .9rem;
+    margin-bottom: .25rem;
+    order: -1;
+    position: relative;
+
+    &::after,
+    &::before { content: ""; }
+
+    &.required abbr {
+      font-size: 1.5rem;
+      font-weight: $em-font-weight-light;
+      line-height: 0;
+      position: relative;
+      text-decoration: none;
+      top: .5rem;
+    }
+  }
+
+  fieldset { flex: 0 0 20rem; }
+
+  .form-control-label {
+    &::after,
+    &::before {
+      @include transition(transform .3s ease-in-out);
+      background: none;
+      content: "";
+      display: block;
+      position: absolute;
+    }
+
+    /* Invalid X icon */
+    &::before {
+      @include transform(scale(0));
+      color: $em-form-color-danger;
+      content: "\00D7";
+      font-size: 1.8rem;
+      font-weight: $em-font-weight-bold;
+      right: .7rem;
+      top: 1.3rem;
+    }
+
+    /* Valid √ icon */
+    &::after {
+      @include transform(scale(0) rotate(42deg));
+      border: solid $em-color-gray-700;
+      border-width: 0 .2rem .2rem 0;
+      bottom: -1.85rem;
+      height: .9rem;
+      right: 1rem;
+      width: .5rem;
+    }
+
+    /* Chevron icon for select lists */
+    &.select::after,
+    &.country_select::after {
+      @include transition(border-color .3s ease-in-out, transform .3s ease-in-out, top .3s ease-in-out);
+      @include transform(rotate(135deg));
+      border-color: $em-color-gray-300;
+      border-width: .2rem .2rem 0 0;
+      height: .7rem;
+      top: 2.25rem;
+      width: .7rem;
+    }
+  }
+
+  /* Default styles for all inputs */
+  .form-control {
+    @include appearance(none);
+    @include border-radius(0);
+    @include transition(border-color .3s ease-in-out);
+    @include x-browser-fallback;
+    border-color: $em-color-gray-300;
+    color: $em-color-black;
+
+    @include input-placeholder { color: $transparent; }
+
+    &:hover { border-color: $em-form-color-state; }
+
+    &:focus {
+      background-image: none;
+      border-color: $em-form-color-active;
+      box-shadow: none;
+    }
+
+    /* Bootstrap validation styles overrides */
+    &.is-valid,
+    &.is-invalid {
+      background-image: none;
+      border-color: $em-color-gray-300;
+      box-shadow: none;
+    }
+
+    &.is-valid {
+      &:focus,
+      &:focus:hover {
+        background-image: none;
+        border-color: $em-form-color-active;
+        box-shadow: none;
+      }
+
+      &:hover { border-color: $em-form-color-state; }
+    }
+
+    &.is-invalid,
+    &.is-invalid:hover,
+    &.is-invalid:focus:hover { border-color: $em-form-color-danger; }
+
+    &:disabled {
+      border-color: $em-color-gray-300;
+      color: $em-color-gray-400;
+      cursor: not-allowed;
+
+      &:hover,
+      &:focus {
+        border-color: $em-color-gray-300;
+
+        + label::after,
+        + label::before { border-color: $em-color-gray-300; }
+      }
+    }
+  }
+
+  /* Overrides for specific inputs */
+  input[type="url"].required,
+  input[type="tel"].required,
+  input[type="text"].required,
+  input[type="email"].required,
+  input[type="number"].required,
+  input[type="password"].required {
+    &.filled:valid {
+      background-image: none;
+      border-color: $em-form-color-success;
+
+      + label::after {
+        @include transform(scale(1) rotate(42deg));
+        border-color: $em-form-color-success;
+      }
+
+      &.is-invalid,
+      &.is-invalid:focus {
+        background-image: none;
+        border-color: $em-form-color-danger;
+        box-shadow: none;
+
+        + label::after { @include transform(scale(0)); }
+        + label::before { @include transform(scale(1)); }
+      }
+    }
+
+    &.filled:not(:focus):invalid {
+      background-image: none;
+      border-color: $em-form-color-danger;
+      box-shadow: none;
+      outline: 0;
+
+      + label::before { @include transform(scale(1)); }
+    }
+
+    &:focus,
+    &:active {
+      box-shadow: none;
+      outline: 0;
+    }
+  }
+
+  input[type="number"].required {
+    &.filled:valid,
+    &.filled:not(:focus):invalid { padding-right: 2rem; }
+  }
+
+  /* Overrides for specific inputs */
+  select {
+    @include appearance(none);
+    @include border-radius(0);
+    cursor: pointer;
+
+    &:hover + label.select::after,
+    &:hover + label.country_select::after { border-color: $em-form-color-state; }
+
+    &:focus + label.select::after,
+    &:focus + label.country_select::after {
+      @include transform(rotate(-45deg));
+      border-color: $em-form-color-active;
+      top: 2.5rem;
+    }
+
+    /* Validations for required select lists - except Country */
+    &.select.required:not(:focus):valid,
+    &.country_select.required:not(:focus):valid {
+      border-color: $em-form-color-success;
+
+      &.is-invalid {
+        background-image: none;
+        border-color: $em-form-color-danger;
+        box-shadow: none;
+
+        + label::after { border-color: $em-form-color-danger; }
+      }
+
+      + label::after { border-color: $em-form-color-success; }
+    }
+
+    &.select.required.is-invalid:focus + label::after,
+    &.country_select.required.is-invalid:focus + label::after { border-color: $em-form-color-danger; }
+  }
+
+  /* Custom upload button for input file */
+  input[type="file"] {
+    height: 0;
+    opacity: 0;
+    position: absolute;
+    width: auto;
+
+    &:hover + label::before {
+      background-color: $em-form-color-success;
+      border: 1px solid $em-form-color-success;
+      color: $em-color-light;
+    }
+
+    &:focus + label::before,
+    &:active + label::before {
+      background-color: $em-form-color-state;
+      border-color: $em-form-color-state;
+      color: $em-color-light;
+    }
+
+    &:invalid label::before {
+      background-color: $em-form-color-danger;
+      border-color: $em-form-color-danger;
+    }
+
+    + label {
+      cursor: pointer;
+      height: 4.05rem;
+      margin: 0;
+    }
+
+    + label::before {
+      @include transform(none);
+      @include transition(background-color .3s ease-in-out, border .3s ease-in-out, color .3s ease-in-out);
+      background-color: $em-color-gray-100;
+      border: 1px solid $em-color-gray-100;
+      bottom: 0;
+      color: $em-color-gray-700;
+      content: "Choose File";
+      display: table;
+      font-size: 1rem;
+      font-weight: $em-font-weight-regular;
+      left: 0;
+      margin-top: .25rem;
+      padding: .4rem .9rem;
+      position: absolute;
+    }
+  }
+
+  /* Custom checkboxes & radio buttons */
+  .form-check {
+    padding: 0;
+    position: relative;
+
+    &:hover label::before {
+      border: .4rem solid $em-form-color-state;
+      margin-right: 1rem;
+    }
+
+    label[for="custom_form_entry_agree"] span { display: none; }
+
+    .form-check-input {
+      height: 1px;
+      left: 1px;
+      margin: 0;
+      opacity: 0;
+      position: absolute;
+      top: 1rem;
+      width: 1px;
+
+      @include pseudo-class(valid, focus) {
+        + label { color: $em-color-gray-700; }
+      }
+
+      &:checked {
+        box-shadow: none;
+
+        + label {
+          &::before {
+            background: $em-form-color-success;
+            border: 1px solid $em-form-color-success;
+            margin-right: 1rem;
+          }
+
+          &.collection_check_boxes::after { @include transform(scale(1.2) rotate(45deg)); }
+        }
+      }
+
+      &:focus:invalid + label { color: $em-form-color-danger; }
+    }
+
+    label {
+      @include transition(color .3s ease-in-out);
+      align-items: center;
+      cursor: pointer;
+      display: flex;
+      margin-bottom: 0;
+      padding: .75rem 0;
+
+      &::before {
+        @include border-radius(50%);
+        @include transition(background-color .3s ease-in-out, transform .3s ease-in-out, border .3s ease-in-out, margin-right .3s ease-in-out);
+        border: 1px solid $em-color-gray-200;
+        display: inline-block;
+        height: 1.125rem;
+        margin-right: .625rem;
+        width: 1.125rem;
+      }
+
+      &::after { display: none; }
+    }
+
+    label.collection_check_boxes {
+      &::before { @include border-radius(10%); }
+
+      &::after {
+        @include transform(scale(0) rotate(45deg));
+        background: none;
+        border: solid $em-color-light;
+        border-width: 0 .1rem .1rem 0;
+        display: block;
+        height: .55rem;
+        left: .45rem;
+        position: absolute;
+        top: 1.1rem;
+        width: .3rem;
+      }
+    }
+  }
+
+  .mit_email_consent {
+    .simple-form-optional {
+      display: none;
+    }
+  }
+
+  /* Bootstrap submit buttons styles override */
+  input[type="submit"] {
+    @include transition(background-color .3s ease-in-out, border .3s ease-in-out, color .3s ease-in-out);
+    appearance: none;
+    background-color: $em-form-color-success;
+    border: 1px solid $em-form-color-success;
+    color: $em-color-light;
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: $em-form-color-state;
+      border-color: $em-form-color-state;
+    }
+
+    &:focus,
+    &:active {
+      background-color: $em-form-color-active;
+      border-color: $em-form-color-active;
+      outline: 0;
+    }
+  }
+}
+/* stylelint-enable selector-no-qualifying-type,
+selector-class-pattern, selector-max-type */

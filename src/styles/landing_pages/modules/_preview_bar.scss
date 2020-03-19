@@ -1,0 +1,27 @@
+.preview-bar {
+  background-color: $em-color-primary;
+  color: $em-color-light;
+
+  &__inner { height: 6.5rem; }
+
+  &__heading { font-weight: $em-font-weight-regular; }
+
+  &__btn {
+    @include border-radius(.5rem);
+    background-color: $em-color-primary;
+    border: 2px solid $em-color-light;
+    color: $em-color-light;
+    margin-top: 0;
+    padding: .5rem 2rem;
+
+    @include media-breakpoint-up(md) {
+      @include border-radius(0);
+      padding: 1.2rem 4rem;
+    }
+
+    &:hover {
+      background-color: $em-color-light;
+      color: $em-color-primary;
+    }
+  }
+}

@@ -1,0 +1,97 @@
+/* stylelint-disable declaration-no-important */
+.margin-bottom-none { margin-bottom: 0 !important; }
+.margin-bottom-xsmall { margin-bottom: $em-margin-xsmall !important; }
+.margin-bottom-small { margin-bottom: $em-margin-small !important; }
+.margin-bottom-medium { margin-bottom: $em-margin-medium !important; }
+.margin-bottom-large { margin-bottom: $em-margin-large !important; }
+.margin-top-none { margin-top: 0 !important; }
+.margin-top-small { margin-top: $em-margin-small !important; }
+.margin-top-medium { margin-top: $em-margin-medium !important; }
+
+.text-center { text-align: center !important; }
+.text-right { text-align: right !important; }
+.text-left { text-align: left !important; }
+.float-right { float: right !important; }
+.float-left { float: left !important; }
+
+.strong { font-weight: $em-font-weight-semi-bold !important; }
+.medium { font-weight: $em-font-weight-medium !important; }
+.uppercase { text-transform: uppercase !important; }
+.italic { font-style: italic !important; }
+
+.mark {
+  background: none;
+  color: $em-color-secondary;
+}
+
+.hidden { display: none !important; }
+
+.disabled {
+  opacity: .5;
+  pointer-events: none;
+}
+
+.pixel {
+  display: none;
+}
+
+.d-flex { display: flex !important; }
+.d-block { display: block !important; }
+.d-inline { display: inline !important; }
+.d-inline-block { display: inline-block !important; }
+
+.text-truncate { @include ellipsis; }
+
+.text-gray { color: $em-color-gray-500 !important; }
+.text-primary { color: $em-color-primary !important; }
+.text-secondary { color: $em-color-secondary !important; }
+
+.border { @include border; }
+.border-bottom { @include border(bottom); }
+.border-left { @include border(left); }
+.border-right { @include border(right); }
+.border-top { @include border(top); }
+
+.strike-through { text-decoration: line-through; }
+
+.pre-line { white-space: pre-line !important; }
+
+.desktop {
+  display: none !important;
+
+  @include media-breakpoint-up(md) {
+    display: block !important;
+
+    &--inline { display: inline !important; }
+  }
+}
+
+.mobile {
+  display: block !important;
+
+  &--inline { display: inline !important; }
+
+  @include media-breakpoint-up(md) { display: none !important; }
+}
+
+.row--small-gutter {
+  margin-left: -5px;
+  margin-right: -5px;
+
+  > .col,
+  > [class*="col-"] {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+.container--small {
+  max-width: 100%;
+  width: 52rem;
+}
+
+.container--medium {
+  max-width: 100%;
+  width: 60rem;
+}
+/* stylelint-enable declaration-no-important */

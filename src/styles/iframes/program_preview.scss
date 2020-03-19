@@ -1,0 +1,49 @@
+//----------------------------------*\
+// ABSTRACTS
+//----------------------------------*/
+
+@import "abstracts/variables";
+@import "abstracts/mixins";
+@import "abstracts/functions";
+@import "abstracts/bootstrap_overrides";
+
+//----------------------------------*\
+// VENDOR
+//----------------------------------*/
+
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/forms";
+@import "bootstrap/scss/buttons";
+@import "bootstrap/scss/transitions";
+@import "bootstrap/scss/dropdown";
+@import "bootstrap/scss/utilities/sizing.scss";
+@import "bootstrap/scss/utilities/flex.scss";
+@import "bootstrap/scss/utilities/spacing";
+@import "bootstrap/scss/alert.scss";
+
+//----------------------------------*\
+// BASE
+//----------------------------------*/
+
+@import "base/base";
+@import "base/fonts";
+@import "base/typography";
+@import "base/utilities";
+
+//----------------------------------*\
+// COMPONENTS
+//----------------------------------*/
+
+@import "components/modal";
+@import "components/modal_form";
+
+//----------------------------------*\
+// OVERRIDES
+//----------------------------------*/
+
+@import "overrides/university_theme";
+

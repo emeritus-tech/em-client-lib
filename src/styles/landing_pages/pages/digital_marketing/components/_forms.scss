@@ -1,0 +1,12 @@
+/* --------------------------------------------------
+  Custom styles for Digital Marketing Landing Page
+----------------------------------------------------- */
+form {
+  .form {
+    &__input { @include autofill(marketing-colors(columbia-business-school-executive-education, primary)); }
+  }
+
+  /* stylelint-disable selector-no-qualifying-type */
+  input[type="submit"] { @include em-theme-buttons($marketing-colors, columbia-business-school-executive-education, secondary); }
+  /* stylelint-enable selector-no-qualifying-type */
+}

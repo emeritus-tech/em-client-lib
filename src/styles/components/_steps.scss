@@ -1,0 +1,23 @@
+.steps-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &__step {
+    color: $em-color-gray-500;
+    font-size: 1.6rem;
+    margin: 0 .4rem 0 0;
+
+    &:not(:last-of-type)::after {
+      color: $em-color-gray-500;
+      content: "\003E";
+      font-weight: $em-font-weight-regular;
+    }
+
+    &--active {
+      color: $em-color-gray-800;
+      font-weight: $em-font-weight-bold;
+    }
+  }
+}

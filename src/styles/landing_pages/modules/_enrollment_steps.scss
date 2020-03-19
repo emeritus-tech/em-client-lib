@@ -1,0 +1,62 @@
+.enrollment-steps {
+  background: rgba($em-color-primary, .1);
+  padding: 3rem 0 4rem;
+
+  &__steps {
+    padding: 3.5rem 0 1rem;
+
+    @include media-breakpoint-up(md) { padding-bottom: 2rem; }
+  }
+
+  &__title {
+    font-size: 3.6rem;
+    line-height: 1.3;
+  }
+
+  .step {
+    &__arrow {
+      @include transform(rotate(90deg));
+      margin: 5rem 0;
+
+      @include media-breakpoint-up(md) {
+        @include transform(none);
+        margin-bottom: 0;
+      }
+    }
+
+    &__title {
+      color: $black;
+      font-size: 2.2rem;
+      font-weight: $em-font-weight-regular;
+      margin: 1rem 0 .5rem;
+
+      @include media-breakpoint-up(md) {
+        color: $em-color-dark;
+        font-size: 2rem;
+      }
+    }
+
+    &__text {
+      color: $em-color-gray-500;
+      font-size: 1.6rem;
+    }
+  }
+
+  .payment {
+    &__title {
+      border-top: 2px solid $em-color-primary;
+      color: $em-color-primary;
+      font-size: 3.6rem;
+      font-weight: $em-font-weight-semi-bold;
+      padding: 2rem 0 1rem;
+    }
+
+    &__balance {
+      color: $black;
+      font-size: 2.5rem;
+      font-weight: $em-font-weight-regular;
+      line-height: 1.4;
+      margin-bottom: 1rem;
+    }
+  }
+}

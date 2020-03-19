@@ -1,0 +1,27 @@
+@import "marketing/topic_landing_pages/base/layout";
+
+.topic-landing-pages {
+  //----------------------------------*\
+  // BASE
+  //----------------------------------*/
+
+  @import "marketing/topic_landing_pages/base/typography";
+
+  //----------------------------------*\
+  // COMPONENTS
+  //----------------------------------*/
+
+  /* TODO: this component should be inside marketing folder and
+  be default for both landing pages and topic landing pages */
+  @import "landing_pages/components/forms";
+  @import "marketing/topic_landing_pages/components/buttons";
+  @import "marketing/topic_landing_pages/components/forms";
+
+  //----------------------------------*\
+  // MODULES
+  //----------------------------------*/
+
+  @import "marketing/topic_landing_pages/modules/collaboration";
+  @import "marketing/topic_landing_pages/modules/hero";
+  @import "marketing/topic_landing_pages/modules/list";
+}

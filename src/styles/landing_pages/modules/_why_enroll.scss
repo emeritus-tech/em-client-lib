@@ -1,0 +1,28 @@
+.why-enroll {
+  padding: 3rem 1rem;
+
+  &__world-economy {
+    margin: 4rem 0 0;
+    padding: 0 1.5rem;
+
+    @include media-breakpoint-up(lg) {
+      margin: 4rem 0 0;
+      padding: 0 10rem;
+    }
+
+    &__column {
+      border-bottom: 1px solid $em-color-gray-200;
+      border-top: 1px solid $em-color-gray-200;
+      margin: 3rem 0;
+      padding: 2rem 0;
+
+      @include media-breakpoint-up(md) {
+        border: 0;
+        border-left: 1px solid $em-color-gray-200;
+        border-right: 1px solid $em-color-gray-200;
+        margin: 0;
+        padding: 0 1.5rem;
+      }
+    }
+  }
+}

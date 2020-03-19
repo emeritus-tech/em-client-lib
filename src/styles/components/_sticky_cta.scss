@@ -1,0 +1,39 @@
+.sticky-cta {
+  background: $em-color-light;
+  width: 100%;
+  z-index: 2;
+
+  &__heading {
+    font-weight: $em-font-weight-regular;
+    text-align: left;
+  }
+
+  &--desktop {
+    @include transition(opacity .25s);
+    display: none;
+    position: fixed;
+
+    @include media-breakpoint-up(md) { opacity: 0; }
+
+    /* stylelint-disable declaration-no-important */
+    &.js-is-sticky {
+      opacity: 1;
+      position: fixed !important;
+
+      @include media-breakpoint-up(md) { display: block; }
+    }
+    /* stylelint-enable declaration-no-important */
+  }
+
+  &--mobile {
+    bottom: 0;
+    position: fixed;
+
+    @include media-breakpoint-up(md) { display: none; }
+
+    .sticky-cta__heading {
+      font-size: 1.2rem;
+      padding: 0 2rem;
+    }
+  }
+}

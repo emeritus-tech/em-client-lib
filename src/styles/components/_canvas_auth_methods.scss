@@ -1,0 +1,22 @@
+.authentication-method {
+  font-size: 2rem;
+
+  &--primary {
+    border: 1px solid $em-color-gray-50;
+    height: 32.4rem;
+    padding: .9rem;
+    width: 37rem;
+  }
+
+  &--secondary {
+    font-weight: $em-font-weight-regular;
+    max-width: 50rem;
+  }
+
+  &__image {
+    background-color: $em-color-gray-50;
+    margin-bottom: .625rem;
+  }
+
+  &__link { font-size: 2rem; }
+}

@@ -1,0 +1,51 @@
+.program {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &__item {
+    background-color: $em-color-light;
+    border: 2px solid $em-color-gray-300;
+    margin: 0;
+    padding: 1.5rem 0 0;
+    text-align: center;
+
+    @include media-breakpoint-up(lg) {
+      padding-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    &:not(:first-of-type) {
+      margin-top: 1.5rem;
+
+      @include media-breakpoint-up(lg) { margin-top: 2.5rem; }
+    }
+  }
+
+  &__img {
+    @include object-fit(scale-down);
+    margin: 0 0 2.5rem;
+    max-height: 20rem;
+    overflow: hidden;
+
+    @include media-breakpoint-up(lg) {
+      border: 0;
+      margin: 0;
+      max-width: 30rem;
+    }
+  }
+
+  &__registration { margin: 2.5rem 0 0; }
+
+  &__date,
+  &__date:valid {
+    border-color: $em-color-gray-200;
+    margin: 0 2.5rem 2.5rem 1rem;
+    padding: 1.3rem 3rem 1.3rem 1rem;
+    width: auto;
+  }
+
+  &__deadline {
+    @include media-breakpoint-up(lg) { margin-right: 1rem; }
+  }
+}

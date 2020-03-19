@@ -1,0 +1,21 @@
+.emeritus-logo {
+  display: block;
+  margin: 0 auto;
+  width: 20rem;
+
+  @include media-breakpoint-up(md) { width: 28.5rem; }
+  @include media-breakpoint-up(lg) { margin: 0; }
+
+  &--white .logo__path { fill: $em-color-light; }
+  &--logotype .logo__isotype { display: none; }
+
+  &--isotype {
+    .logo__isotype { @include transform(translateX(-15%)); }
+    .logo__logotype { display: none; }
+  }
+}
+
+.branding-styles .university-logo-link {
+  left: 8%;
+  position: absolute;
+}

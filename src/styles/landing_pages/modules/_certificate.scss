@@ -1,0 +1,11 @@
+.certificate {
+  // background: image-url("landing_pages/digital_strategies/emeritus-digital-strategies-certificate-bg.jpg") no-repeat center right;
+  background-size: cover;
+
+  &__img {
+    margin-bottom: 4rem;
+    max-width: 100%;
+
+    @include media-breakpoint-up(md) { margin: 0; }
+  }
+}

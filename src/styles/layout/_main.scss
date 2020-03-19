@@ -1,0 +1,10 @@
+.main {
+  flex: 1 1 auto;
+  padding: 4rem 0 1.5rem;
+
+  > .section {
+    padding: 2.5rem;
+
+    &--border { border: 2px solid $em-color-gray-300; }
+  }
+}

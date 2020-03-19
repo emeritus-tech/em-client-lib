@@ -1,0 +1,9 @@
+.payments {
+  &__paragraph {
+    &--initial,
+    &--auxiliar { text-transform: uppercase; }
+
+    &--initial { color: $em-color-primary; }
+    &--auxiliar { color: $em-color-secondary; }
+  }
+}

@@ -1,0 +1,24 @@
+.observation {
+  @include border-radius(1rem);
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 2rem 2rem .5rem;
+
+  &--gray { background-color: lighten($em-color-gray-100, 6%); }
+
+  &__paragraph {
+    color: $em-color-gray-500;
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+
+  &__list {
+    list-style: none;
+    list-style-type: initial;
+    margin: 1rem 0;
+    padding-left: .8rem;
+
+    @include media-breakpoint-up(lg) { padding-left: 2.5rem; }
+  }
+}

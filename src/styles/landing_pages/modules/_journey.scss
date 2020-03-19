@@ -1,0 +1,48 @@
+.journey {
+  background: $em-color-gray-100;
+
+  &__learning {
+    margin: 1rem 2rem;
+    width: 39%;
+
+    @include media-breakpoint-up(lg) {
+      margin: 0;
+      width: 20%;
+    }
+  }
+
+  &__syllabus-list {
+    margin-bottom: 0;
+    padding: 3rem 1.5rem 0;
+
+    @include media-breakpoint-down(sm) {
+      &:last-of-type { padding-top: 0; }
+      &:first-of-type { padding-bottom: 0; }
+    }
+
+    @include media-breakpoint-up(md) { padding-bottom: 2rem; }
+  }
+
+  .learning {
+    &__graphic {
+      height: 11.5rem;
+      width: 11.5rem;
+
+      path { fill: $em-color-gray-500; }
+    }
+  }
+
+  .syllabus-list {
+    &__item {
+      font-size: 1.8rem;
+      list-style-type: none;
+      margin-bottom: 2rem;
+      padding: 0;
+    }
+
+    &__head {
+      color: $em-color-primary;
+      font-weight: $em-font-weight-semi-bold;
+    }
+  }
+}

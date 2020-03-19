@@ -1,0 +1,40 @@
+.thanks {
+  background: $em-color-gray-50;
+  padding: 1rem 0 2rem;
+
+  @include media-breakpoint-up(lg) { padding-bottom: 3rem; }
+
+  &__subtitle {
+    color: $em-color-primary;
+    font-size: 2rem;
+    line-height: 1.5;
+    margin: 1rem 0;
+
+    @include media-breakpoint-up(lg) { font-size: 2.4rem; }
+  }
+
+  &__header {
+    border-bottom: 2px solid $em-color-gray-400;
+    margin-bottom: 1rem;
+
+    @include media-breakpoint-up(md) {
+      border: 0;
+      border-right: 2px solid $em-color-gray-400;
+      margin: 0;
+    }
+  }
+
+  &__text {
+    color: $em-color-gray-500;
+    font-size: 1.6rem;
+    line-height: 1;
+    margin-bottom: 1rem;
+
+    @include media-breakpoint-up(md) { margin-bottom: 2rem; }
+  }
+
+  &__btn {
+    margin: .5rem;
+    @include media-breakpoint-up(lg) { width: 80%; }
+  }
+}

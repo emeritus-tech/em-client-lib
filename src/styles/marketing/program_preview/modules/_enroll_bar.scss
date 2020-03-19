@@ -1,0 +1,10 @@
+.enroll-bar {
+  background-color: rgba($em-color-primary, .1);
+  padding: 2rem 2rem 2rem 0;
+  text-align: center;
+
+  @include media-breakpoint-up(lg) {
+    margin: 0;
+    text-align: left;
+  }
+}

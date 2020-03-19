@@ -1,0 +1,219 @@
+//----------------------------------*\
+// GLOBAL
+//----------------------------------*/
+
+$em-header-height: 10rem !default;
+$em-footer-height: 3.9rem !default;
+$em-flash-height: 4rem !default;
+$em-margin-xsmall: .5rem !default;
+$em-margin-small: 1.5rem !default;
+$em-margin-medium: 2rem !default;
+$em-margin-large: 3rem !default;
+
+//----------------------------------*\
+// COLORS
+//----------------------------------*/
+
+$transparent: transparent !default;
+
+$em-color-black: #000 !default;
+$em-color-dark: #393939 !default;
+$em-color-light: #fff !default;
+$em-color-disabled: #dedede !default;
+
+$em-color-gray-50: #f8f8f8 !default;
+$em-color-gray-100: #e8e8e8 !default;
+$em-color-gray-200: #ccc !default;
+$em-color-gray-250: #ddd !default;
+$em-color-gray-300: #dddddf !default;
+$em-color-gray-400: #999 !default;
+$em-color-gray-450: #777 !default;
+$em-color-gray-500: #777879 !default;
+$em-color-gray-600: #555 !default;
+$em-color-gray-700: #444 !default;
+$em-color-gray-800: #333 !default;
+$em-color-gray-900: #222 !default;
+
+$em-color-primary: #063 !default;
+$em-color-primary-dark: #004f27 !default;
+$em-color-primary-light: #ebf5f1 !default;
+
+$em-color-secondary: #df7978 !default;
+
+$em-color-error: #ab2321 !default;
+$em-color-success: #197430 !default;
+$em-color-warning: #fdf8e1 !default;
+
+$marketing-colors: (
+  "columbia-business-school-executive-education": (
+    primary: #0080c8,
+    secondary: #df6c4b,
+    tertiary: #f6b344,
+    quaternary: #355777
+  ),
+  "digital-marketing": (
+    primary: #df6c4b,
+    secondary: #0080c8,
+    tertiary: #f6b344,
+    quaternary: #355777
+  ),
+  "kellogg-executive-education": (
+    primary: #4f2582,
+    secondary: #fff
+  ),
+  "uc-berkeley-executive-education": (
+    primary: #f9b115,
+    secondary: #fff
+  ),
+  "wharton-executive-education": (
+    primary: #a90533,
+    secondary: #004785,
+    tertiary: #d7bc6a
+  )
+) !default;
+
+/* White Labeling for Universities */
+$white-label-colors: (
+  "columbia-business-school-executive-education": (
+    primary: #df6c4b,
+    secondary: #fff
+  ),
+  "columbia-engineering-executive-education": (
+    primary: #103567,
+    secondary: #fff
+  ),
+  "uc-berkeley-executive-education": (
+    primary: #fdb515,
+    secondary: #fff
+  ),
+  "cambridge-judge-business-school-executive-education": (
+    primary: #ffb81c,
+    secondary: #fff
+  ),
+  "gies-college-of-business-at-university-of-illinois": (
+    primary: #e74a27,
+    secondary: #fff
+  ),
+  "insead-executive-education": (
+    primary: #006e51,
+    secondary: #fff
+  ),
+  "iese-business-school": (
+    primary: #f00,
+    secondary: #fff
+  ),
+  "imd": (
+    primary: #a7d802,
+    secondary: #fff
+  ),
+  "imperial-college-business-school": (
+    primary: #08cdae,
+    secondary: #fff
+  ),
+  "kellogg-executive-education": (
+    primary: #4f2582,
+    secondary: #fff
+  ),
+  "london-business-school": (
+    primary: #dc002e,
+    secondary: #fff
+  ),
+  "mit-professional-education": (
+    primary: #a31f34,
+    secondary: #fff
+  ),
+  "mit-sloan-executive-education": (
+    primary: #ed7700,
+    secondary: #fff
+  ),
+  "mit-xpro": (
+    primary: #a31f34,
+    secondary: #fff
+  ),
+  "the-national-university-of-singapore-business-school": (
+    primary: #ef7c00,
+    secondary: #fff
+  ),
+  "tuck-executive-education": (
+    primary: #467c3b,
+    secondary: #fff
+  ),
+  "nyu-tandon-rlab": (
+    primary: #57068c,
+    secondary: #fff
+  ),
+  "thayer-school-of-engineering-at-dartmouth": (
+    primary: #00703c,
+    secondary: #fff
+  ),
+  "uc-berkeley-extension": (
+    primary: #003262,
+    secondary: #fff
+  ),
+  "wharton-executive-education": (
+    primary: #004785,
+    secondary: #fff
+  )
+) !default;
+
+$status-colors: (
+  "alert": (
+    bg: #f6ddde,
+    text: $em-color-error
+  ),
+  "notice": (
+    bg: #dbf1d6,
+    text: $em-color-success
+  ),
+  "warning": (
+    bg: $em-color-warning,
+    text: #9c6d32
+  )
+) !default;
+
+$social-colors: (
+  fb: #4876b4,
+  tw: #1da1f2,
+  li: #007bb5
+) !default;
+
+$em-color-link: $em-color-secondary !default;
+$em-color-link-hover: $em-color-primary !default;
+$em-color-link-visited: $em-color-primary !default;
+
+$em-color-text: $em-color-dark !default;
+
+$em-form-color-danger: #dc3545 !default;
+$em-form-color-state: #79baec !default;
+$em-form-color-success: #20b2aa !default;
+$em-form-color-active: darken($em-form-color-state, 15%) !default;
+
+//----------------------------------*\
+// FONTS
+//----------------------------------*/
+
+$em-main-font-family: roboto, arial, sans-serif !default;
+$em-program-preview-font-family: lato, arial, sans-serif !default;
+
+$em-main-font-family-light: roboto 300 !default;
+$em-main-font-family-regular: roboto 400 !default;
+$em-main-font-family-medium: roboto 500 !default;
+$em-main-font-family-bold: roboto 700 !default;
+$em-program-preview-font-family-regular: lato 400 !default;
+$em-program-preview-font-family-bold: lato 600 !default;
+
+$em-font-weight-light: 300 !default;
+$em-font-weight-regular: 400 !default;
+$em-font-weight-medium: 500 !default;
+$em-font-weight-semi-bold: 600 !default;
+$em-font-weight-bold: 700 !default;
+
+
+//----------------------------------*\
+// TRANSITIONS
+//----------------------------------*/
+
+$em-transition-fast: .15s !default;
+$em-transition-normal: .3s !default;
+$em-transition-slow: .5s !default;
+$em-transition-timing-default: linear !default;

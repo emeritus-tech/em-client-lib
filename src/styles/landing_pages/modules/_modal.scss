@@ -1,0 +1,17 @@
+.modal {
+  @include transition(all .3s);
+  background-color: rgba($black, .5);
+
+  &--large .modal__body {
+    @include border-radius(.3rem);
+    @include center-elem(horizontal);
+    background: $white;
+    border: 1px solid rgba($black, .2);
+    margin: 3rem auto;
+    max-height: calc(100vh - 6rem);
+    min-width: 90%;
+    padding: 4rem 4rem 2.5rem;
+    top: 0;
+    width: 90%;
+  }
+}

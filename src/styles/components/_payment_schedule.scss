@@ -1,0 +1,38 @@
+.payment-schedule {
+  &__heading {
+    font-size: 1.8rem;
+    font-weight: $em-font-weight-medium;
+  }
+
+  &__table {
+    color: $em-color-gray-800;
+    font-size: 1.4rem;
+
+    thead {
+      border-bottom: 2px solid $em-color-gray-100;
+
+      th,
+      th:first-of-type,
+      th:last-of-type {
+        font-weight: $em-font-weight-medium;
+        padding: .5rem 1rem;
+      }
+    }
+
+    tbody {
+      tr:nth-of-type(even) { background-color: $em-color-gray-50; }
+
+      td,
+      td:first-of-type,
+      td:last-of-type { padding: .5rem 1rem; }
+    }
+
+    tfoot {
+      font-weight: $em-font-weight-bold;
+
+      td,
+      td:first-of-type,
+      td:last-of-type { padding: 2rem 1rem .5rem; }
+    }
+  }
+}

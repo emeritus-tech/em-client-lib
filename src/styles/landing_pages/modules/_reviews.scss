@@ -1,0 +1,12 @@
+.reviews {
+  background-color: rgba($em-color-disabled, .9);
+  padding-bottom: 5rem;
+  padding-top: 0;
+
+  .container {
+    border-top: 1px solid $em-color-primary;
+    padding-top: 2rem;
+  }
+
+  &__title { font-weight: $em-font-weight-light; }
+}

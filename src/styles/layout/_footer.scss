@@ -1,0 +1,27 @@
+.main-footer {
+  background-color: $em-color-light;
+  border-top: 1px solid $em-color-gray-250;
+  color: $em-color-gray-450;
+  flex-shrink: 0;
+  font-size: 1.2rem;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+
+  &__paragraph {
+    color: $em-color-gray-600;
+    font-weight: $em-font-weight-semi-bold;
+    margin: 0;
+    padding: 1rem;
+  }
+
+  &__logo {
+    float: right;
+    height: auto;
+    width: 18.5rem;
+  }
+
+  &--custom-margin { margin: -1.8rem 6.5rem 0; }
+}

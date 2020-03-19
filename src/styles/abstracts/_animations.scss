@@ -1,0 +1,13 @@
+@include keyframes(autofill) {
+  to {
+    background: rgba($em-color-primary, .05) right center no-repeat;
+    background-image: inherit;
+    color: $em-color-gray-700;
+    font-family: $em-main-font-family;
+  }
+}
+
+@include keyframes(horizontal-fill) {
+  to { width: 100%; }
+}
+

@@ -1,0 +1,34 @@
+@import "marketing/program_preview/base/layout";
+
+.program-preview {
+  //----------------------------------*\
+  // BASE
+  //----------------------------------*/
+
+  @import "marketing/program_preview/base/typography";
+
+  //----------------------------------*\
+  // COMPONENTS
+  //----------------------------------*/
+
+  @import "marketing/program_preview/components/buttons",
+    "marketing/program_preview/components/video_preview";
+
+  //----------------------------------*\
+  // MODULES
+  //----------------------------------*/
+
+  @import "marketing/program_preview/modules/footer",
+    "marketing/program_preview/modules/header",
+    "marketing/program_preview/modules/hero",
+    "marketing/program_preview/modules/highlights",
+    "marketing/program_preview/modules/enroll_bar",
+    "marketing/program_preview/modules/modules";
+
+  //----------------------------------*\
+  // OVERRIDES
+  //----------------------------------*/
+
+  @import "marketing/program_preview/overrides/university_theme",
+    "marketing/program_preview/overrides/white_label";
+}

@@ -1,0 +1,5 @@
+.btn {
+  @include border-radius(.5rem);
+
+  @include media-breakpoint-up(md) { @include border-radius(0); }
+}

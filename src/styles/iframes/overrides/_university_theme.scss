@@ -1,0 +1,11 @@
+/* --------------------------------------------------------------
+  Manage style colors for each modal form University theme
+-------------------------------------------------------------- */
+@each $university-name, $marketing-color in $marketing-colors {
+  &.iframe.iframe--#{$university-name} {
+    .form-control { @include autofill(marketing-colors($university-name, primary)); }
+
+    .btn,
+    input[type="submit"] { @include em-theme-buttons($marketing-colors, $university-name, primary); }
+  }
+}

@@ -1,0 +1,32 @@
+.collaboration {
+  background-color: $white;
+  padding: 3rem 0;
+  position: relative;
+
+  img {
+    margin-bottom: .5rem;
+    width: 30rem;
+
+    @include media-breakpoint-up(md) {
+      margin: 0;
+      width: 40rem;
+    }
+  }
+
+  &__scroll-to {
+    @include center-elem(horizontal);
+    @include border-radius(100%);
+    // @include background("icons/emeritus-chevron-icon.svg", 2.5rem, center 55%);
+    background-color: $white;
+    bottom: -3rem;
+    box-shadow: 0 2px 4px 1px rgba($black, .1);
+    height: 5rem;
+    width: 5rem;
+
+    @include media-breakpoint-up(md) {
+      background-size: 3rem;
+      height: 6rem;
+      width: 6rem;
+    }
+  }
+}

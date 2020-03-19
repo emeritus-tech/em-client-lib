@@ -1,0 +1,208 @@
+.modules {
+  padding-top: 0;
+
+  @include media-breakpoint-up(md) { padding-top: 2rem; }
+
+  &__nav {
+    align-items: baseline;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    position: relative;
+  }
+
+  &__videos {
+    display: none;
+    margin-top: -.5rem;
+    order: 99;
+    padding: 2rem 0 0;
+    width: 100%;
+
+    @include media-breakpoint-up(md) { padding: 3.7rem 0 0; }
+    @include media-breakpoint-up(lg) { box-shadow: 0 .5rem 0 0 $em-color-gray-100 inset; }
+
+    &__bg {
+      @include media-breakpoint-up(lg) {
+        background: $em-color-gray-50;
+        margin: 0 -9rem;
+        padding: 1.6rem 9rem 1.3rem;
+      }
+    }
+  }
+
+  &__week {
+    margin-top: 2rem;
+    @include media-breakpoint-up(md) { margin-top: 5rem; }
+  }
+
+  .nav {
+    &__label {
+      @include transition(border-color $em-transition-normal $em-transition-timing-default);
+      border-bottom: .5rem solid $em-color-gray-100;
+      color: $em-color-gray-800;
+      cursor: pointer;
+      font-size: 1.8rem;
+      margin: 0 0 2rem;
+      padding: .5rem 1.55rem;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      white-space: nowrap;
+      z-index: 1;
+
+      @include media-breakpoint-up(md) { margin: 0; }
+
+      &:hover { border-color: rgba($em-color-primary, .5); }
+
+      &--selected {
+        border-color: $em-color-primary;
+        font-weight: $em-font-weight-semi-bold;
+      }
+
+      &--mobile {
+        @include media-breakpoint-up(md) { display: none; }
+      }
+
+      &--desktop {
+        @include media-breakpoint-down(sm) { display: none; }
+      }
+    }
+
+    &__control {
+      @include checkbox-toggler;
+
+      &:checked + .nav__label {
+        border-color: $em-color-primary;
+        font-weight: $em-font-weight-semi-bold;
+
+        + .modules__videos { display: block; }
+      }
+    }
+  }
+
+  .week {
+    &__activities {
+      background-color: rgba($em-color-primary, .1);
+      padding: 3rem 1.5rem;
+
+      @include media-breakpoint-up(md) { padding: 3rem 1.5rem 3rem 3rem; }
+
+      &__list { padding: 2rem 1rem 1rem 2rem; }
+    }
+  }
+
+  .videos {
+    &__slider {
+      margin: 0;
+      position: relative;
+
+      @include media-breakpoint-only(md) { padding: 0 4rem; }
+    }
+  }
+
+  .slider {
+    $slides-quantity: 6;
+
+    &__container {
+      overflow: hidden;
+      width: 100%;
+    }
+
+    &__inner {
+      @include transition(left .25s linear);
+      display: block;
+      position: relative;
+
+      @include media-breakpoint-up(md) { display: flex; }
+    }
+
+    &__slide {
+      align-items: flex-start;
+      display: none;
+      flex: 0 0 100%;
+      float: left;
+      margin: 0;
+      position: relative;
+      width: 100%;
+
+      &:nth-of-type(1) { display: block; }
+
+      @include media-breakpoint-up(md) {
+        display: flex;
+
+        &:nth-of-type(1) { display: flex; }
+      }
+    }
+
+    &__load-more {
+      @include checkbox-toggler;
+
+      &:checked {
+        + .slider__container .slider__slide {
+          display: block;
+
+          @include media-breakpoint-up(md) { display: flex; }
+        }
+
+        ~ .slider__load-more-link { visibility: hidden; }
+      }
+    }
+
+    &__load-more-link {
+      color: $em-color-primary;
+      cursor: pointer;
+      font-size: 1.6rem;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    &__navigation {
+      @include transform(rotate(-46deg));
+      border-left: 3px solid $em-color-gray-400;
+      border-top: 3px solid $em-color-gray-400;
+      cursor: pointer;
+      display: none;
+      height: 2.5rem;
+      left: -4%;
+      overflow: hidden;
+      position: absolute;
+      top: 8.5rem;
+      width: 2.5rem;
+
+      @include media-breakpoint-only(md) { left: 0; }
+
+      &:hover { z-index: 1; }
+    }
+
+    &__control {
+      @include checkbox-toggler;
+
+      @for $i from 1 through $slides-quantity {
+        &:nth-of-type(#{$i}):checked {
+          ~ .slider__container .slider__inner {
+            @include media-breakpoint-up(md) { left: 100% * (-$i + 1); }
+          }
+        }
+
+        @include media-breakpoint-up(md) {
+          &:nth-of-type(#{$i}):checked ~ .slider__navigation:nth-of-type(#{$i + 1}) {
+            @include transform(rotate(136deg));
+            display: block;
+            left: auto;
+            right: -4%;
+
+            @include media-breakpoint-only(md) { right: 0; }
+          }
+
+          &:nth-of-type(#{$i}):checked ~ .slider__navigation:nth-of-type(#{$i - 1}) {
+            @include transform(rotate(-46deg));
+            display: block;
+            left: -4%;
+
+            @include media-breakpoint-only(md) { left: 0; }
+          }
+        }
+      }
+    }
+  }
+}

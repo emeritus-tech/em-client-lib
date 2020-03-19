@@ -1,0 +1,14 @@
+.preview-bar {
+  background-color: marketing-colors(columbia-business-school-executive-education, secondary);
+  padding: 1rem 0;
+
+  &__btn {
+    background-color: marketing-colors(columbia-business-school-executive-education, secondary);
+    margin-right: 1.3rem;
+
+    &:hover {
+      background-color: $white;
+      color: marketing-colors(columbia-business-school-executive-education, secondary);
+    }
+  }
+}

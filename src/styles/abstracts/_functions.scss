@@ -1,0 +1,23 @@
+/* --------------
+  Map Deep Get
+---------------- */
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+
+  @return $map;
+}
+
+/* -------------------------------------
+  Marketing Pages Colors Map Simplifier
+--------------------------------------- */
+@function marketing-colors($keys...) {
+  $value: $marketing-colors;
+
+  @each $key in $keys {
+    $value: map-get($value, $key);
+  }
+
+  @return $value;
+}

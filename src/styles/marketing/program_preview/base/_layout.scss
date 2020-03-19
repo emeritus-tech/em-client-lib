@@ -1,0 +1,18 @@
+.program-preview {
+  background-color: $em-color-light;
+  color: $em-color-gray-800;
+  font-family: $em-program-preview-font-family;
+
+  section { padding: 3rem 1.5rem 5rem; }
+
+  .container {
+    @include media-breakpoint-down(md) { max-width: none; }
+  }
+
+  hr {
+    border-bottom: 1px solid $em-color-gray-300;
+    position: relative;
+    top: -3rem;
+    width: 100%;
+  }
+}

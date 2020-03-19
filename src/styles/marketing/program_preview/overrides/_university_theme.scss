@@ -1,0 +1,25 @@
+/* --------------------------------------------------------------
+  Manage style colors for each Free Preview University theme
+-------------------------------------------------------------- */
+@each $university-name, $marketing-color in $marketing-colors {
+  &.program-preview--white-label.program-preview--#{$university-name} {
+    $preview-color: marketing-colors($university-name, primary);
+
+    a,
+    .slider__load-more-link { color: $preview-color; }
+
+    .nav__control {
+      &:checked + .nav__label {
+        border-color: $preview-color;
+        color: $preview-color;
+      }
+    }
+
+    .nav__label:hover { border-color: rgba($preview-color, .5); }
+
+    .enroll-bar,
+    .week__activities { background-color: $em-color-gray-100; }
+
+    .btn { @include em-theme-buttons($marketing-colors, $university-name, primary); }
+  }
+}

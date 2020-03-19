@@ -1,0 +1,10 @@
+/* ---------------------------------------------------------------------
+  Custom Information module colors for Digital Marketing Landing Page
+---------------------------------------------------------------------- */
+.duration {
+  &__box {
+    background: marketing-colors(columbia-business-school-executive-education, primary);
+
+    &--live { background: marketing-colors(columbia-business-school-executive-education, secondary); }
+  }
+}

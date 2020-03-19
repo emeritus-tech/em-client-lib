@@ -1,0 +1,28 @@
+.secure-checkout {
+  justify-content: center;
+  margin-bottom: 3rem;
+
+  @include media-breakpoint-up(md) {
+    justify-content: flex-end;
+    margin-bottom: 0;
+  }
+
+  &__icon {
+    height: 1.4rem;
+    width: 1.1rem;
+
+    @include media-breakpoint-up(md) {
+      height: 1.8rem;
+      width: 1.4rem;
+    }
+  }
+
+  &__heading {
+    color: $em-color-gray-800;
+    font-size: 1.2rem;
+    font-weight: $em-font-weight-medium;
+    padding-left: 1rem;
+
+    @include media-breakpoint-up(md) { font-size: 1.6rem; }
+  }
+}

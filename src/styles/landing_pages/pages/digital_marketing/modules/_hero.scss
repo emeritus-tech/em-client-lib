@@ -1,0 +1,30 @@
+/* ------------------------------------------------------
+  Custom Hero colors for Digital Marketing Landing Page
+-------------------------------------------------------- */
+.hero {
+  background-color: marketing-colors(columbia-business-school-executive-education, primary);
+
+  @include media-breakpoint-up(lg) {
+    @include object-fit;
+    background: linear-gradient(to right, transparent 50%, $em-color-gray-300 75%, $em-color-gray-300 100%);
+    background-color: $transparent;
+    border-top: 1px solid $em-color-gray-300;
+    box-shadow: 0 -24rem 10rem -12rem rgba($black, .6) inset;
+    min-height: 60rem;
+  }
+
+  &__background {
+    @include media-breakpoint-up(lg) { z-index: -1; }
+  }
+
+  &__header {
+    background-color: marketing-colors(columbia-business-school-executive-education, primary);
+
+    @include media-breakpoint-up(lg) { background-color: $transparent; }
+  }
+
+  .form {
+    &__title { color: $em-color-dark; }
+    &__subtitle { color: marketing-colors(columbia-business-school-executive-education, secondary); }
+  }
+}

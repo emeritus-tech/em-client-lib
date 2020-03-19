@@ -1,0 +1,38 @@
+html {
+  // This defines what 1rem is --
+  font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+  height: 100%;
+}
+
+body {
+  min-height: 100%; /* avoid the ie10-11 min-height bug */
+
+  @include ie11-filter { height: 0; }
+}
+
+hr {
+  border: 0;
+  border-bottom: 2px solid $em-color-gray-300;
+  margin: 0 auto;
+  width: calc(100% - #{$em-margin-small * 2});
+}
+
+figure img { max-width: 100%; }
+
+table {
+  width: 100%;
+
+  td,
+  th {
+    padding: .5rem 1rem;
+
+    &:first-of-type { padding-left: 0; }
+
+    &:last-of-type {
+      padding-right: 0;
+      text-align: right;
+    }
+  }
+
+  p { margin-bottom: 0; }
+}

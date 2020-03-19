@@ -1,0 +1,87 @@
+.payment {
+  &__amount {
+    color: $em-color-gray-800;
+    font-size: 2.1rem;
+    margin-top: -.5rem;
+  }
+
+  &__payment-method {
+    &::before { top: 2.4rem; }
+
+    &__heading {
+      color: $em-color-gray-800;
+      font-size: 2.1rem;
+      font-weight: $em-font-weight-medium;
+    }
+  }
+
+  &__notice {
+    color: $em-color-gray-500;
+    font-size: 1.3rem;
+    font-weight: $em-font-weight-regular;
+  }
+
+  &__more_credit_cards {
+    color: $em-color-gray-500;
+    font-size: 1.2rem;
+    padding-left: .5rem;
+  }
+
+  .card-number,
+  .card-cvc {
+    position: relative;
+
+    &::after {
+      @include center-elem(vertical);
+      content: "";
+      display: block;
+      right: 1.1rem;
+    }
+  }
+
+  .card-number::after {
+    @include background("icons/lock.svg");
+    height: 1.8rem;
+    width: 1.4rem;
+  }
+
+  .card-cvc::after {
+    @include background("icons/cvc.svg");
+    height: 1.6rem;
+    width: 2.4rem;
+  }
+
+  .form-radio {
+    &:hover label:not(.payment__payment-method)::before { border: 0; }
+
+    &.disabled {
+      @include user-select(none);
+      opacity: 1;
+
+      .payment__payment-method::after {
+        @include border-radius(.4rem);
+        background: rgba($white, .6);
+        content: "";
+        cursor: not-allowed;
+        height: calc(100% - 2px);
+        left: 1px;
+        pointer-events: none;
+        position: absolute;
+        top: 1px;
+        width: calc(100% - 2px);
+      }
+    }
+
+    &__clarification {
+      display: block;
+      flex: 0 0 100%;
+      font-size: 1.3rem;
+      margin: 1rem 0 .5rem;
+    }
+  }
+
+  .form__validation-error-message--general {
+    position: relative;
+    top: -1rem;
+  }
+}

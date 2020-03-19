@@ -1,0 +1,531 @@
+/* -----------------
+  Auto Prefixer
+------------------ */
+
+/* stylelint-disable selector-no-vendor-prefix, property-no-vendor-prefix */
+@mixin prefixer($map, $vendors: webkit moz ms o) {
+  @each $property, $value in $map {
+    @if $vendors {
+      @each $vendor in $vendors {
+        #{'-' + $vendor + '-' + $property}: #{$value};
+      }
+    }
+    // Dump regular property anyway
+    #{$property}: #{$value};
+  }
+}
+
+/* --------------------
+  Overflow
+--------------------- */
+@mixin overflow($value: auto, $direction: false) {
+  -ms-overflow-style: none;
+
+  @if $direction {
+    overflow-#{$direction}: $value;
+
+    @include media-breakpoint-down(md) { -webkit-overflow-scrolling: touch; }
+  }
+
+  @if $value {
+    @if $value == "none" {
+      overflow: -moz-scrollbars-none;
+
+      &::-webkit-scrollbar,
+      &::-webkit-scrollbar-track,
+      &::-webkit-scrollbar-thumb  {
+        height: 0;
+        width: 0;
+      }
+    }
+  }
+
+  @else {
+    overflow: $value;
+    @include media-breakpoint-down(md) { -webkit-overflow-scrolling: touch; }
+  }
+}
+
+/* ---------------------
+  Form Placeholders
+---------------------- */
+@mixin input-placeholder {
+  &.placeholder { @content; }
+  &::placeholder { @content; }
+  &:-moz-placeholder { @content; }
+  &::-moz-placeholder { @content; }
+  &::-webkit-input-placeholder { @content; }
+  &:-ms-input-placeholder { @content; }
+}
+
+/* ---------------------
+  Placeholder Shown
+---------------------- */
+@mixin input-state($filled: null) {
+  &:not(.filled),
+  &:placeholder-shown { @content; }
+
+  @include ie11-filter {
+    &:not(.filled) { @content; }
+  }
+
+  @if $filled {
+    &.filled,
+    &:not(:placeholder-shown) { @content; }
+
+    @include ie11-filter {
+      &.filled { @content; }
+    }
+  }
+}
+
+/* -----------------
+  Autofill format
+------------------ */
+@mixin autofill($color: $em-color-primary) {
+  &:-webkit-autofill,
+  &:-webkit-autofill:focus,
+  &:-internal-autofill-selected {
+    @include animation(autofill 0s both);
+    @include prefixer(("text-fill-color": $em-color-gray-700));
+    @include prefixer(("box-shadow": 0 0 0 100rem rgba($color, .05) inset));
+    @content;
+  }
+
+  &:-moz-autofill,
+  &:-moz-autofill-preview {
+    filter: rgba($color, .05);
+    @content;
+  }
+}
+
+/* ----------------------------
+  Input Pseudo Classes
+------------------------------ */
+@mixin pseudo-class($value...) {
+  &:#{$value},
+  &.#{$value},
+  &--#{$value},
+  &.is-#{$value} { @content; }
+}
+
+/* -----------------
+  Object Fit
+------------------ */
+@mixin object-fit($fit: cover, $position: center) {
+  overflow: hidden;
+  position: relative;
+  @content;
+
+  img {
+    height: 100%;
+    max-width: none;
+    -o-object-fit: $fit;
+    object-fit: $fit;
+    -o-object-position: $position;
+    object-position: $position;
+    width: 100%;
+
+    @include ie11-filter {
+      @include center-elem(horizontal);
+      min-height: 100%;
+      width: auto;
+    }
+  }
+}
+/* stylelint-enable selector-no-vendor-prefix, property-no-vendor-prefix */
+
+/* --------------------
+  Font Face
+--------------------- */
+@mixin font-face($font-family) {
+  $family: nth($font-family, 1);
+  $weight: nth($font-family, 2);
+
+  @font-face {
+    font-family: $family;
+    font-weight: $weight;
+    // src: font-url("#{$family}/#{$family}-#{$weight}.eot");
+    // src: font-url("#{$family}/#{$family}-#{$weight}.eot?#iefix") format("embedded-opentype"), font-url("#{$family}/#{$family}-#{$weight}.woff") format("woff"), font-url("#{$family}/#{$family}-#{$weight}.ttf") format("truetype"), font-url("#{$family}/#{$family}-#{$weight}.svg##{$family}-#{$weight}") format("svg");
+  }
+}
+
+/* --------------------
+  Sticky
+--------------------- */
+
+/* stylelint-disable value-no-vendor-prefix */
+@mixin sticky-elem($top: 0, $right: auto, $bottom: auto, $left: auto) {
+  bottom: $bottom;
+  left: $left;
+  position: -webkit-sticky;
+  position: sticky;
+  right: $right;
+  top: $top;
+
+  @include ie11-filter {
+    height: auto;
+    position: relative;
+  }
+}
+/* stylelint-enable value-no-vendor-prefix */
+
+/* ---------------------------
+  Keyframes for animations
+---------------------------- */
+
+/* stylelint-disable at-rule-no-vendor-prefix */
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} { @content; }
+  @-moz-keyframes #{$name} { @content; }
+  @-ms-keyframes #{$name} { @content; }
+  @keyframes #{$name} { @content; }
+}
+/* stylelint-enable at-rule-no-vendor-prefix */
+
+/* --------------------
+  User Select
+--------------------- */
+@mixin user-select($selection) { @include prefixer((user-select: $selection)); }
+
+/* --------------------
+  Transform
+--------------------- */
+@mixin transform($transform) { @include prefixer((transform: $transform)); }
+
+/* --------------------
+  Background Size
+--------------------- */
+@mixin background-size($size) { @include prefixer((background-size: $size)); }
+
+/* -----------------
+  Animation
+------------------ */
+@mixin animation($animation) { @include prefixer((animation: $animation)); }
+
+/* --------------------
+  Appearance
+--------------------- */
+@mixin appearance($appearance) { @include prefixer((appearance: $appearance)); }
+
+/* --------------------
+  Backface Visibility
+--------------------- */
+@mixin backface-visibility($visibility) { @include prefixer((backface-visibility: $visibility)); }
+
+/* --------------------
+  Overflow Scrolling
+--------------------- */
+@mixin overflow-scrolling($type) { @include prefixer((overflow-scrolling: $type)); }
+
+/* ---------------------------
+  Center Element Absolutely
+---------------------------- */
+@mixin center-elem($orientation: default) {
+  position: absolute;
+
+  @if $orientation {
+    @if $orientation == "horizontal" {
+      @include transform(translateX(-50%));
+      left: 50%;
+    }
+
+    @if $orientation == "vertical" {
+      @include transform(translateY(-50%));
+      position: absolute;
+      top: 50%;
+    }
+  }
+
+  @if $orientation == default {
+    @include transform(translate(-50%, -50%));
+    left: 50%;
+    top: 50%;
+  }
+}
+
+/* -------------
+  Background
+--------------- */
+@mixin background($image-path: null, $size: null, $position: null, $repeat: null, $color: null, $fixed: null) {
+  $background-attachment: if($fixed, $fixed, initial);
+  $background-size: if($size, $size, cover);
+  $background-position: if($position, $position, center);
+  $background-repeat: if($repeat, $repeat, no-repeat);
+
+  @include background-size($background-size);
+
+  @if $color { background-color: $color; }
+  @if $image-path { background-image: image-url(#{$image-path}); }
+
+  background-attachment: $background-attachment;
+  background-position: $background-position;
+  background-repeat: $background-repeat;
+}
+
+/* ---------------------
+  Multiple Transition
+---------------------- */
+@mixin multiple-transition($properties: all, $duration: $em-transition-fast, $timing: $em-transition-timing-default, $delay: 0s) {
+  $value: ();
+
+  @each $property in $properties {
+    @if length($value) > 0 {
+      $value: append($value, unquote(",") #{$property} $duration $timing $delay);
+    }
+
+    @else {
+      $value: append($value, #{$property} $duration $timing $delay);
+    }
+  }
+
+  @include transition($value);
+}
+
+/* -----------------
+  Ellipsis
+------------------ */
+@mixin ellipsis($display: block) {
+  @include overflow(hidden);
+  display: $display;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* -----------------
+  Borders
+------------------ */
+@mixin border($direction: false, $width: 2px, $style: solid, $color: $em-color-gray-300, $padding: 2.5rem) {
+  padding: $padding;
+
+  @if $direction { border-#{$direction}: $width $style $color; }
+  @else { border: $width $style $color; }
+}
+
+/* -----------------
+  Buttons
+------------------ */
+@mixin em-theme-buttons($theme-list, $theme-name, $button-class: primary, $reversed: false) {
+  background-color: if($reversed, $white, map-deep-get($theme-list, $theme-name, $button-class));
+  border-color: if($reversed, $white, map-deep-get($theme-list, $theme-name, $button-class));
+  box-shadow: none;
+  color: if($reversed, map-deep-get($theme-list, $theme-name, $button-class), $white);
+
+  &:hover,
+  &:focus,
+  &:active,
+  &:not(:disabled):active {
+    background-color: if($reversed, map-deep-get($theme-list, $theme-name, $button-class), $transparent);
+    border-color: if($reversed, $white, map-deep-get($theme-list, $theme-name, $button-class));
+    box-shadow: none;
+    color: if($reversed, $white, map-deep-get($theme-list, $theme-name, $button-class));
+  }
+}
+
+/* ---------------------
+  Flash Status
+---------------------- */
+@mixin flash($status) {
+  &--#{$status} {
+    background-color: map-get(map-get($status-colors, $status), bg);
+    color: map-get(map-get($status-colors, $status), text);
+  }
+}
+
+/* --------------------
+  IE11 Filter
+--------------------- */
+@mixin ie11-filter {
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) { @content; }
+}
+
+/* --------------------
+  Checkbox Toggler
+--------------------- */
+@mixin checkbox-toggler {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* ---------------------
+  Floating Labels
+---------------------- */
+@mixin floating-labels($placeholder: null) {
+  display: block;
+  overflow: hidden;
+  position: relative;
+
+  select,
+  textarea,
+  input:not([type="submit"]) {
+    @include float-label-input;
+    padding: 2.3rem 3rem .8rem 1rem;
+
+    @if $placeholder {
+      padding: 0 3rem 0 1rem;
+
+      @include input-state {
+        &:not(:focus) + label { @include placeholder-label; }
+        @include autofill { @include placeholder-label(focused); }
+      }
+    }
+  }
+
+  select:not(:valid) {
+    @include input-state {
+      + label {
+        @include float-label;
+
+        @if $placeholder { @include placeholder-label; }
+      }
+    }
+  }
+
+  textarea {
+    @include autofill {
+      + label { background-color: #eaefeb; }
+    }
+
+    + label {
+      @include multiple-transition(transform padding width);
+      @include transform(translate(1px, 1px));
+      @include border-radius(3px);
+      background-color: $em-color-light;
+      height: auto;
+      padding: 1.1rem 1.1rem .5rem;
+      transform-origin: 1px 1px;
+      width: calc(100% - 3px);
+
+      &::before { top: 1rem; }
+
+      &::after {
+        right: 1.5rem;
+        top: 1.6rem;
+      }
+    }
+
+    @include input-state {
+      &:not(:focus) + label {
+        @include multiple-transition(transform padding);
+        width: 80%;
+      }
+    }
+  }
+
+  label:not(.form-check-label) {
+    @include float-label(scaled);
+    @if $placeholder { @include placeholder-label(focused); }
+  }
+}
+
+/* --------------------
+  Float Label Input
+--------------------- */
+@mixin float-label-input {
+  @include input-placeholder { color: $transparent; }
+
+  @include input-state {
+    &:not(:focus):not(:disabled):not([type="checkbox"]) {
+      @include input-placeholder { color: $transparent; }
+      + label { @include float-label; }
+
+      @include autofill {
+        + label { @include float-label(scaled); }
+      }
+    }
+
+    &:not(:focus):disabled + label { @include float-label; }
+  }
+
+  &.numeric:not(:placeholder-shown):not(:focus) + label { @include float-label(scaled); }
+}
+
+/* --------------------
+  Default Float Label
+--------------------- */
+@mixin float-label($scaled: null) {
+  @include ellipsis;
+  @include multiple-transition(transform font-size height, $em-transition-fast, $em-transition-timing-default);
+  @include transform(translate(1rem, 1.8rem));
+  background-color: $transparent;
+  color: $em-color-gray-400;
+  font-size: 1.6rem;
+  height: calc(100% - 3.5rem);
+  left: 0;
+  line-height: normal;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  text-align: left;
+  text-transform: capitalize;
+  top: 0;
+  transform-origin: 1rem top;
+  width: calc(100% - 3.5rem);
+  z-index: 0;
+
+  @if $scaled {
+    @include multiple-transition(transform font-size, $em-transition-fast, $em-transition-timing-default);
+    @include transform(translate(1rem, 1rem));
+    font-size: 1.2rem;
+    height: calc(100% - 2rem);
+    pointer-events: none;
+    top: 0;
+  }
+}
+
+/* --------------------
+  Placeholder Label
+--------------------- */
+@mixin placeholder-label($focused: null) {
+  @include transition(none);
+  font-weight: $em-font-weight-regular;
+  width: calc(100% - 3.5rem);
+
+  @if $focused {
+    @include transform(translate(1rem, 100%));
+    color: $transparent;
+    font-size: 1.6rem;
+  }
+}
+
+/* ---------------------------
+  Cross Browsing List Reset
+----------------------------- */
+
+/* stylelint-disable declaration-no-important, selector-class-pattern */
+@mixin x-browser-fallback() {
+  @-moz-document url-prefix("") {
+    &.select,
+    &--select,
+    &.country_select {
+      padding-left: .6rem !important;
+
+      &:-moz-focusring,
+      &::-moz-focus-inner {
+        color: $transparent;
+        text-shadow: 0 0 0 $em-color-black;
+
+        option:not(:checked) { color: $em-color-gray-700; }
+      }
+    }
+  }
+
+  @include ie11-filter {
+    &::-ms-clear { display: none; }
+
+    &.select,
+    &--select,
+    &.country_select {
+      padding-left: .6rem !important;
+
+      &::-ms-expand { display: none; }
+
+      &::-ms-value {
+        background: $transparent;
+        color: $em-color-gray-700;
+      }
+    }
+  }
+}
+/* stylelint-enable declaration-no-important, selector-class-pattern */

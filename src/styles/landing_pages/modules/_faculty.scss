@@ -1,0 +1,15 @@
+.faculty {
+  &__img {
+    @include border-radius(100%);
+    height: 12.5rem;
+    width: 12.5rem;
+  }
+
+  &__name {
+    color: $em-color-primary;
+    font-weight: $em-font-weight-bold;
+    padding: .5rem 0 0;
+  }
+
+  &__designation { padding: .5rem 0 .7rem; }
+}

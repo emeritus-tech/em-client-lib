@@ -1,0 +1,9 @@
+//----------------------------------*\
+// FONTS
+//----------------------------------*/
+@include font-face($em-main-font-family-light);
+@include font-face($em-main-font-family-regular);
+@include font-face($em-main-font-family-medium);
+@include font-face($em-main-font-family-bold);
+@include font-face($em-program-preview-font-family-regular);
+@include font-face($em-program-preview-font-family-bold);

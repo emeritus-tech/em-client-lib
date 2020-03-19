@@ -1,0 +1,16 @@
+.sticky-nav {
+  background-color: #df6c4b;
+  height: 10em;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  z-index: -1;
+
+  &__active {
+    opacity: 1;
+    transition: all 500ms;
+    z-index: 100;
+  }
+}

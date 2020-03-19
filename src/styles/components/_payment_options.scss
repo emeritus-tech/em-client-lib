@@ -1,0 +1,25 @@
+.payment-options {
+  color: $em-color-gray-800;
+  font-size: 1.6rem;
+
+  &__installment-price {
+    &--before-price {
+      color: $em-color-gray-500;
+      font-size: 1.2rem;
+      text-align: right;
+      text-decoration: line-through;
+    }
+  }
+
+  &__first-payment-reminder {
+    color: $em-color-gray-500;
+    font-size: 1.3rem;
+    margin-top: 1rem;
+  }
+
+  &__see-payment-schedule {
+    color: $em-color-primary;
+    font-size: 1.2rem;
+    margin-left: .5rem;
+  }
+}

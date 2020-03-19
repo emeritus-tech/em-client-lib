@@ -1,0 +1,96 @@
+.hero {
+  background: $em-color-primary no-repeat center;
+  background-size: cover;
+  opacity: 1;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  width: 100%;
+
+  &__background {
+    display: block;
+    width: 100%;
+
+    @include media-breakpoint-up(lg) { position: absolute; }
+  }
+
+  &__header {
+    padding: 0;
+
+    @include media-breakpoint-up(lg) {
+      margin-top: 30rem;
+      padding: 0 1.5rem 0 0;
+    }
+  }
+
+  .header {
+    &__text,
+    &__title {
+      color: $white;
+      margin: 0;
+
+      @include media-breakpoint-up(lg) { background-color: rgba($black, .7); }
+    }
+
+    &__title {
+      font-size: 3.4rem;
+      font-weight: $em-font-weight-semi-bold;
+      line-height: 1.2;
+      padding: 1.5rem 1.5rem .5rem;
+
+      @include media-breakpoint-up(lg) {
+        font-size: 4.6rem;
+        padding: 1rem 1rem 0 2rem;
+      }
+    }
+
+    &__text {
+      font-size: 1.7rem;
+      font-weight: $em-font-weight-medium;
+      line-height: 1.4;
+      padding: 0 1.5rem 1rem;
+
+      @include media-breakpoint-up(lg) {
+        font-size: 2.6rem;
+        padding: 0 1rem 1rem 2rem;
+      }
+    }
+  }
+
+  &__form {
+    background: $white;
+    border: 1px solid $em-color-disabled;
+    margin: .5rem -1.5rem 0;
+    padding: 1rem 1rem 0;
+    position: relative;
+    z-index: 9;
+
+    @include media-breakpoint-up(lg) { margin: .5rem 0 0; }
+  }
+
+  .form {
+    &__title {
+      color: $em-color-dark;
+      font-size: 2rem;
+      font-weight: $em-font-weight-medium;
+      line-height: 1.1;
+      margin-top: 0;
+      text-transform: uppercase;
+    }
+
+    &__subtitle {
+      color: $em-color-secondary;
+      display: block;
+      font-size: 2.8rem;
+      margin-top: .5rem;
+    }
+
+    &__btn {
+      @include border-radius(0);
+      display: block;
+      font-size: 1.6rem;
+      margin: 2rem 0;
+      width: 100%;
+    }
+  }
+}

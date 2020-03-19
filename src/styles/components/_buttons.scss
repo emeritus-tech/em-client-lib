@@ -1,0 +1,141 @@
+.btn {
+  @include appearance(none);
+  @include border;
+  @include button-size(1.5rem, 1rem, 1.6rem, 1.18, 0);
+  font-size: 1.4rem;
+  font-weight: $em-font-weight-medium;
+  padding: 1.15rem .5rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: inherit;
+
+  &:disabled {
+    background-color: $em-color-disabled;
+    border-color: $em-color-disabled;
+    color: $em-color-light;
+    cursor: not-allowed;
+  }
+
+  @include media-breakpoint-up(md) {
+    font-size: 1.6rem;
+    padding: 1.15rem;
+  }
+
+  &:focus {
+    box-shadow: none;
+    outline: 0;
+  }
+
+  &:hover { text-decoration: none; }
+
+  &--primary {
+    @include button-variant($em-color-primary, $em-color-primary);
+    box-shadow: none;
+
+    &:hover:not(:disabled) { background-color: $em-color-primary-dark; }
+  }
+
+  &--secondary {
+    @include button-variant($em-color-light, $em-color-gray-500);
+    border-width: 2px;
+    box-shadow: none;
+    color: $em-color-gray-500;
+
+    &:hover:not(:disabled) {
+      background-color: $em-color-gray-500;
+      border-color: $em-color-gray-500;
+      color: $em-color-light;
+    }
+  }
+
+  &--closed {
+    @include button-variant($gray-400, $gray-400);
+    box-shadow: none;
+    color: $white;
+
+    &:disabled { color: $white; }
+  }
+
+  &--link {
+    @include button-variant($transparent, $transparent);
+    border: 0;
+    box-shadow: none;
+    color: $em-color-link;
+    font-size: 1.4rem;
+    line-height: 1.1;
+    padding: 0;
+
+    &:hover,
+    &:focus {
+      color: $em-color-link-hover;
+      text-decoration: underline;
+    }
+
+    &:visited { color: $em-color-link; }
+  }
+
+  &--empty {
+    background-color: $transparent;
+    border: 0;
+    box-shadow: none;
+    color: inherit;
+
+    &:focus,
+    &:active {
+      border: 0;
+      box-shadow: none;
+      outline: 0;
+    }
+  }
+
+  &--blank {
+    @include button-variant($transparent, $em-color-gray-500, $transparent, $em-color-gray-500);
+    box-shadow: 0 0 0 1px $em-color-gray-500 inset;
+    color: $em-color-gray-500;
+
+    &:not(:disabled):not(.disabled):not(.btn--disabled) {
+      &:focus,
+      &:hover,
+      &:active {
+        background-color: $em-color-gray-500;
+        border: 1px solid $em-color-gray-500;
+        box-shadow: 0 0 0 1px $em-color-gray-500 inset;
+        color: $em-color-light;
+      }
+    }
+  }
+
+  &--block,
+  &--sm-block,
+  &--md-block,
+  &--lg-block { width: 100%; }
+
+  &--sm-block {
+    @include media-breakpoint-up(md) {
+      width: auto;
+    }
+  }
+
+  &--md-block {
+    @include media-breakpoint-up(lg) {
+      width: auto;
+    }
+  }
+
+  &--lg-block {
+    @include media-breakpoint-down(md) {
+      width: auto;
+    }
+  }
+
+  &--text {
+    border: none;
+    color: $em-color-gray-500;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    text-transform: none;
+    width: auto;
+  }
+}

@@ -1,0 +1,13 @@
+/* -------------------------------------------------------------------
+  Custom enrollment module colors for Digital Strategies Landing Page
+--------------------------------------------------------------------- */
+.enrollment-steps {
+  background: rgba(marketing-colors(columbia-business-school-executive-education, primary), .1);
+
+  .payment {
+    &__title {
+      border-color: marketing-colors(columbia-business-school-executive-education, quaternary);
+      color: marketing-colors(columbia-business-school-executive-education, quaternary);
+    }
+  }
+}

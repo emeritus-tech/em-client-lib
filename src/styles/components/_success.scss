@@ -1,0 +1,28 @@
+.success {
+  color: $em-color-gray-800;
+  display: flex;
+  margin-bottom: 4rem;
+
+  @include media-breakpoint-down(md) {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &__img {
+    @include border-radius(1rem);
+    @include object-fit(cover);
+    height: 20rem;
+    margin: 0 4rem 0 0;
+    width: 20rem;
+
+    @include media-breakpoint-down(md) { margin: 0 0 2rem; }
+  }
+
+  &__info { flex: 1; }
+
+  &__heading {
+    font-size: 3.6rem;
+    font-weight: $em-font-weight-regular;
+    margin-bottom: 2.5rem;
+  }
+}

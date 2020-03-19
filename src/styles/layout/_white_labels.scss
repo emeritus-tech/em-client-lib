@@ -1,0 +1,64 @@
+/* ------------------------------------------
+  Manage style colors for White Label Pages
+-------------------------------------------- */
+@each $white-label-name, $white-label-color in $white-label-colors {
+  $branding-color-primary: map-get($white-label-color, primary);
+  $branding-color-secondary: map-get($white-label-color, secondary);
+
+  .white-label.signed-out.#{$white-label-name}:not(.in-batch),
+  .branding-styles.#{$white-label-name} {
+    .main-header,
+    .main-footer { background-color: $branding-color-secondary; }
+
+    .form__input { @include autofill($branding-color-primary); }
+
+    a,
+    .link {
+      &:not(.btn):not(.nav__link) {
+        color: $branding-color-primary;
+
+        &:hover,
+        &:focus,
+        &:active { color: darken($branding-color-primary, 7.5%); }
+      }
+    }
+
+    .nav__link:hover { color: $branding-color-primary; }
+
+    .btn {
+      @include em-theme-buttons($white-label-colors, $white-label-name, primary);
+
+      &:disabled { opacity: 1; }
+    }
+
+    .btn:not(:disabled) { @include em-theme-buttons($white-label-colors, $white-label-name, primary); }
+  }
+
+  .branding-styles.#{$white-label-name} {
+    .payments {
+      &__paragraph {
+        &--initial,
+        &--auxiliar {
+          color: unset;
+          font-weight: $em-font-weight-semi-bold;
+          text-transform: none;
+        }
+
+        &--initial { font-weight: $em-font-weight-regular; }
+      }
+
+      &__refund-label span { font-weight: $em-font-weight-regular; }
+    }
+
+    .form-radio__input {
+      &:hover,
+      &:focus,
+      &:active,
+      &:checked {
+        + label.bordered,
+        + label::before { border-color: $branding-color-primary; }
+        + .highlight-when-checked { box-shadow: 0 0 0 2px $branding-color-primary inset; }
+      }
+    }
+  }
+}

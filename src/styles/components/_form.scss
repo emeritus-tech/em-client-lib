@@ -1,0 +1,446 @@
+form,
+.form {
+  @include clearfix;
+
+  &__fields-wrapper { position: relative; }
+  &__float-container { @include floating-labels; }
+
+  &__notice {
+    color: $em-color-gray-500;
+    font-size: 1.3rem;
+  }
+
+  &__input {
+    @include autofill($em-color-primary);
+    @include ellipsis;
+    @include appearance(none);
+    @include border-radius(2px);
+    @include x-browser-fallback;
+    background-color: $em-color-light;
+    border: 1px solid $em-color-gray-100;
+    box-shadow: none;
+    color: $em-color-gray-700;
+    cursor: text;
+    display: block;
+    font-family: $em-main-font-family;
+    font-size: 1.6rem;
+    height: 5.5rem;
+    width: 100%;
+
+    &--not-floated {
+      padding: .95rem 1rem;
+
+      @include input-placeholder { color: $em-color-gray-400; }
+
+      @include input-state {
+        &:not(:focus) {
+          @include input-placeholder { color: $em-color-gray-400; }
+        }
+      }
+    }
+
+    /* stylelint-disable selector-no-qualifying-type, selector-class-pattern */
+    &--select,
+    &.select,
+    &.country_select {
+      @include background("icons/emeritus-select-list-arrow.svg", 1.5rem 1.5rem, calc(100% - 1rem) 50%, no-repeat, $transparent);
+      color: inherit;
+      cursor: pointer;
+      padding-right: 3rem;
+    }
+    /* stylelint-enable selector-class-pattern */
+
+    @include pseudo-class(focus) {
+      box-shadow: 0 0 0 2px $em-color-gray-100;
+      outline: none;
+    }
+
+    @include pseudo-class(valid) {
+      &.filled:not(:focus):not(:disabled):required {
+        background: none;
+        border-color: $em-color-success;
+
+        + .form__label::after { @include transform(scale(1) rotate(42deg) translateY(-50%)); }
+      }
+    }
+
+    /* stylelint-disable selector-max-type */
+    @include pseudo-class(invalid) {
+      &.filled:not(:focus):not(:disabled):required,
+      &.form__input--dirty:not(:focus):not(:disabled):required {
+        background: none;
+        border-color: $em-color-error;
+
+        + .form__label::before { @include transform(scale(1) translateY(-50%)); }
+
+        &:valid {
+          border-color: $em-color-error;
+
+          + .form__label::after { @include transform(scale(0) translateY(-50%)); }
+        }
+      }
+    }
+
+    @include pseudo-class(disabled) {
+      background-color: $em-color-gray-100;
+      border-color: $em-color-gray-200;
+      cursor: not-allowed;
+      opacity: .6;
+
+      + label.form__label {
+        color: $em-color-gray-400;
+
+        &::after,
+        &::before { display: none; }
+
+        span { color: $em-color-gray-400; }
+      }
+    }
+
+    &:not(:required) + label span {
+      font-size: 1.3rem;
+      text-transform: lowercase;
+    }
+    /* stylelint-enable selector-no-qualifying-type, selector-max-type */
+  }
+
+  &__label {
+    text-transform: capitalize;
+
+    &::after,
+    &::before {
+      @include transition(transform $em-transition-fast ease-in-out);
+      @include center-elem(vertical);
+      background: none;
+      content: "";
+      display: block;
+      margin-top: -.3rem;
+      right: -1rem;
+    }
+
+    /* Invalid X icon */
+    &::before {
+      @include transform(scale(0) translateY(-50%));
+      color: $em-form-color-danger;
+      content: "\00D7";
+      font-size: 3rem;
+      font-weight: $em-font-weight-light;
+      line-height: .4;
+      width: 1.2rem;
+    }
+
+    /* Valid √ icon */
+    &::after {
+      @include transform(scale(0) rotate(42deg) translateY(-50%));
+      border: solid $em-color-success;
+      border-width: 0 .2rem .2rem 0;
+      height: 1.4rem;
+      margin-top: -.5rem;
+      transform-origin: 1px 1px;
+      width: .8rem;
+    }
+  }
+
+  &__message,
+  &__validation-error-message {
+    color: $em-color-error;
+    font-size: 1.2rem;
+    font-weight: $em-font-weight-regular;
+    line-height: 1.16;
+    margin-top: .4rem;
+
+    &--general {
+      text-align: center;
+      top: -2.25rem;
+      width: 100%;
+    }
+  }
+
+  &__validation-error-message { color: $em-color-error; }
+
+  &__message { color: $em-color-success; }
+
+  &__section {
+    margin: 1.5rem auto 3rem;
+    max-width: 50rem;
+
+    &--agreement {
+      border-top: 1px solid $em-color-gray-300;
+      color: $em-color-gray-800;
+      margin-top: 1rem;
+      padding-top: 3rem;
+
+      &__title {
+        font-size: 1.6rem;
+        font-weight: $em-font-weight-medium;
+      }
+    }
+  }
+
+  .form-check {
+    position: relative;
+
+    &:hover label::before { border: .4rem solid $em-color-gray-200; }
+
+    > label {
+      @include transition(color $em-transition-normal ease-in-out);
+      align-items: center;
+      cursor: pointer;
+      display: flex;
+      margin: 0 0 0 2rem;
+      padding: .75rem 0;
+
+      @include media-breakpoint-up(md) { margin: 0 0 0 1rem; }
+
+      &::before {
+        @include border-radius(10%);
+        @include multiple-transition(background-color transform border, $em-transition-normal);
+        background-color: $em-color-light;
+        border: 1px solid $em-color-gray-200;
+        content: "";
+        display: inline-block;
+        height: 1.5rem;
+        left: 0;
+        margin-right: .625rem;
+        position: absolute;
+        width: 1.5rem;
+      }
+
+      &::after {
+        @include transform(scale(0) rotate(45deg));
+        background: none;
+        border: solid $em-color-light;
+        border-width: 0 .1rem .1rem 0;
+        content: "";
+        height: .55rem;
+        left: .8rem;
+        position: absolute;
+        top: 1rem;
+        width: .3rem;
+      }
+
+      .simple-form-optional { display: none; }
+    }
+
+    abbr {
+      left: .3rem;
+      top: .2rem;
+    }
+
+    .form-check-input {
+      height: 1px;
+      left: 1px;
+      margin: 0;
+      opacity: 0;
+      position: absolute;
+      top: 1rem;
+      width: 1px;
+
+      &:focus:not([class*="--valid"]) + label::before,
+      &:focus:not([class*="--invalid"]) + label::before {
+        border: .4rem solid $em-color-gray-200;
+        box-shadow: 0 0 0 2px $em-color-gray-100;
+      }
+
+      @include pseudo-class(valid) {
+        &:focus + label::before { border: .4rem solid $em-color-success; }
+      }
+
+      &[class*="--invalid"] {
+        + label,
+        &:focus + label {
+          color: $em-color-error;
+
+          &::before { border: .4rem solid $em-color-error; }
+        }
+      }
+
+      &:checked {
+        box-shadow: none;
+
+        + label {
+          &::before {
+            background: $em-color-success;
+            border: 1px solid $em-color-success;
+            margin-right: 1rem;
+          }
+
+          &::after { @include transform(scale(1.7) rotate(45deg)); }
+        }
+      }
+    }
+
+    .form-check-label {
+      align-items: baseline;
+      color: $em-color-gray-700;
+
+      &::before {
+        @include border-radius(10%);
+        @include transform(none);
+        height: 2rem;
+        margin-top: -.2rem;
+        width: 2rem;
+
+        @include media-breakpoint-up(md) {
+          height: 1.5rem;
+          margin: .1rem .5rem 0 0;
+          width: 1.5rem;
+        }
+      }
+
+      &::after {
+        @include transform(scale(0) rotate(45deg));
+        background: none;
+        border: solid $em-color-light;
+        border-width: 0 .1rem .1rem 0;
+        content: "";
+        height: .8rem;
+        left: .6rem;
+        margin: 1rem .2rem;
+        position: absolute;
+        top: 0;
+        width: .4rem;
+
+        @include media-breakpoint-up(md) {
+          height: .55rem;
+          margin: 1.3rem 0;
+          width: .3rem;
+        }
+      }
+    }
+  }
+
+  .form-radio {
+    position: relative;
+
+    &:hover label::before { border: .4rem solid $em-color-gray-200; }
+
+    &__input {
+      height: 1px;
+      left: 1px;
+      margin: 0;
+      opacity: 0;
+      position: absolute;
+      top: 1rem;
+      width: 1px;
+
+      &:focus:not([class*="--valid"]) + label::before,
+      &:focus:not([class*="--invalid"]) + label::before {
+        border: .4rem solid $em-color-gray-200;
+        box-shadow: 0 0 0 2px $em-color-gray-100;
+      }
+
+      &[class*="--invalid"] + label,
+      &[class*="--invalid"]:focus + label { color: $em-color-error; }
+
+      &[class*="--invalid"] + label::before,
+      &[class*="--invalid"]:focus + label::before { border: .4rem solid $em-color-error; }
+
+      @include pseudo-class(valid) {
+        &:focus + label::before { border: .8rem solid $em-color-primary; }
+      }
+
+      &:checked {
+        box-shadow: none;
+
+        + .highlight-when-checked { box-shadow: 0 0 0 2px $em-color-primary inset; }
+
+        + label {
+          &::before { border: .8rem solid $em-color-primary; }
+          .bold-when-checked { font-weight: $em-font-weight-bold; }
+          .visible-when-checked { display: block; }
+        }
+      }
+    }
+
+    > label {
+      @include multiple-transition(color border, $em-transition-normal ease-in-out);
+      @include border-radius(4px);
+      box-shadow: 0 0 0 1px $em-color-gray-300 inset;
+      cursor: pointer;
+      margin: .5rem 0;
+      padding: 2rem 2.9rem 2rem 5.9rem;
+      position: relative;
+      width: 100%;
+
+      &::before {
+        @include border-radius(50%);
+        @include multiple-transition(background-color transform border, $em-transition-normal);
+        background-color: $em-color-light;
+        border: 1px solid $em-color-gray-200;
+        content: "";
+        display: inline-block;
+        height: 2rem;
+        left: 2.1rem;
+        position: absolute;
+        width: 2rem;
+      }
+
+      .visible-when-checked { display: none; }
+    }
+  }
+
+  /* stylelint-disable selector-max-type, selector-no-qualifying-type */
+  fieldset.form-radio {
+    font-size: 0;
+
+    > label { @include border-radius(.4rem); }
+
+    &:not(:only-of-type) {
+      > label {
+        @include border-radius(0);
+        margin: -1px 0 0;
+      }
+
+      &:first-of-type > label {
+        @include border-radius(.4rem .4rem 0 0);
+        margin: .5rem 0 0;
+      }
+
+      &:last-of-type > label {
+        @include border-radius(0 0 .4rem .4rem);
+        margin: -1px 0 .5rem;
+      }
+    }
+  }
+  /* stylelint-enable selector-max-type, selector-no-qualifying-type */
+
+  .with-placeholder .form__input {
+    @include input-state(filled) {
+      &:not(.filled):focus {
+        @include input-placeholder {
+          @include transition(color $em-transition-normal $em-transition-timing-default $em-transition-fast);
+          color: $em-color-gray-400;
+        }
+      }
+    }
+  }
+
+  textarea {
+    @include overflow(scroll);
+    min-height: 15rem;
+    padding-top: 2.8rem;
+    white-space: pre;
+
+    @include media-breakpoint-up(lg) { min-height: 10rem; }
+  }
+
+  abbr {
+    font-size: 1.5rem;
+    font-weight: $em-font-weight-semi-bold;
+    line-height: 0;
+    pointer-events: none;
+    position: relative;
+    text-decoration: none;
+    top: .3rem;
+  }
+
+  // hack to hide the optional labels from the "other" fields since when they're shown
+  // they're required but when they're not they're optional.
+  /* stylelint-disable selector-class-pattern */
+  .salesforce_enrollment_your_industry_other__c .simple-form-optional,
+  .salesforce_enrollment_your_function_other__c .simple-form-optional { display: none; }
+  // hack to hide all optional labels in a form
+  &--hide-optional .simple-form-optional { display: none; }
+  /* stylelint-enable selector-class-pattern */
+}

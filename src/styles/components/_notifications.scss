@@ -1,0 +1,73 @@
+.flash {
+  $flash-transition: $em-transition-normal ease-in-out;
+
+  @include flash(alert);
+  @include flash(notice);
+  @include flash(warning);
+  @include border-radius(0);
+  @include transition(max-height $flash-transition);
+  border: 0;
+  height: auto;
+  margin-bottom: 0;
+  max-height: 100vh;
+  overflow: hidden;
+  padding: 0 2.5rem;
+  position: relative;
+  width: 100%;
+
+  @include media-breakpoint-up(md) {
+    height: $em-flash-height;
+    max-height: $em-flash-height;
+    position: absolute;
+    right: 0;
+    top: 0;
+    top: $em-header-height;
+  }
+
+  ~ .main,
+  ~ .main-footer {
+    @include media-breakpoint-up(md) { @include transform(translateY($em-flash-height)); }
+  }
+
+  &__message {
+    font-weight: $em-font-weight-medium;
+    margin: 1rem 0;
+    padding-right: 5rem;
+
+    @include media-breakpoint-up(md) { @include ellipsis; }
+  }
+
+  &__btn {
+    @include center-elem(vertical);
+    margin-top: -2px;
+    right: 1rem;
+  }
+
+  &__close {
+    color: $em-color-gray-500;
+    cursor: pointer;
+    font-size: 3.2rem;
+    font-weight: $em-font-weight-light;
+    margin: 0;
+    padding: 0 1rem;
+  }
+
+  &__toggler {
+    @include checkbox-toggler;
+
+    &:checked {
+      display: none;
+
+      + .flash {
+        max-height: 0;
+
+        ~ .main,
+        ~ .main-footer {
+          @include transition(transform $flash-transition);
+          @include transform(inherit);
+          top: 0;
+        }
+      }
+    }
+  }
+}

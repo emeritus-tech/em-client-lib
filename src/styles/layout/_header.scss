@@ -1,0 +1,67 @@
+.main-header {
+  box-shadow: 0 2px 4px 0 rgba($black, .1);
+  height: 10rem;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+
+  &__inner {
+    background-color: $em-color-light;
+    height: $em-header-height;
+    justify-content: space-between;
+    padding: 1.5rem;
+  }
+
+
+  &__logo {
+    max-height: 7rem;
+    max-width: 28rem;
+    width: auto;
+
+    @include media-breakpoint-down(sm) {
+      .logo__isotype { display: none; }
+    }
+  }
+
+
+  &__username {
+    color: $em-color-gray-500;
+    font-weight: $em-font-weight-medium;
+    margin-right: 2rem;
+
+    @include media-breakpoint-down(sm) { display: none; }
+  }
+
+  &__menu {
+    position: relative;
+
+    &__btn {
+      @include appearance(none);
+      background: none;
+      border-width: 0;
+      fill: $em-color-black;
+      padding: 0;
+
+      &:hover,
+      &:focus {
+        box-shadow: none;
+        fill: $em-color-primary;
+        outline: 0;
+      }
+    }
+
+    &__dropdown {
+      position: absolute;
+      right: 0;
+      top: 4rem;
+    }
+  }
+}
+
+.signed-out .main-header__inner {
+  justify-content: center;
+
+  @include media-breakpoint-down(sm) {
+    .logo__isotype { display: block; }
+  }
+}

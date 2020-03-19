@@ -1,0 +1,23 @@
+.user {
+  align-items: center;
+  color: $em-color-gray-600;
+  display: none;
+  flex-wrap: nowrap;
+  padding: 2rem 2.5rem;
+
+  @include media-breakpoint-up(md) { display: flex; }
+
+  &__thumb {
+    @include border-radius(100%);
+    height: 6.5rem;
+    margin-right: 2rem;
+    width: 6.5rem;
+  }
+
+  &__info {
+    @include ellipsis;
+    max-width: 20rem;
+
+    &:last-of-type { margin-bottom: 0; }
+  }
+}

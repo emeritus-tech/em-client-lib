@@ -1,0 +1,27 @@
+.main-header {
+  background: none;
+  box-shadow: none;
+  height: auto;
+  padding: 1.4rem 1.5rem;
+  text-align: center;
+
+  &__emeritus {
+    margin-bottom: 1rem;
+    width: 28rem;
+
+    @include media-breakpoint-up(md) {
+      float: left;
+      margin: 0;
+    }
+  }
+
+  &__university {
+    max-width: 28rem;
+
+    @include media-breakpoint-up(md) {
+      float: right;
+      max-height: 8rem;
+      min-width: 24.1rem;
+    }
+  }
+}

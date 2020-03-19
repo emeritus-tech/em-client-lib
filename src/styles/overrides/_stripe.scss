@@ -1,0 +1,50 @@
+/* stylelint-disable selector-class-pattern, selector-no-qualifying-type */
+.StripeElement {
+  @extend .form__input;
+  @include autofill;
+  padding: 2.3rem 3rem .8rem 1rem;
+
+  &--empty ~ label.form__label {
+    @include float-label;
+    @include transition(none);
+  }
+
+  &--focus,
+  &--invalid,
+  &--complete {
+    ~ label.form__label { @include float-label(scaled); }
+  }
+
+  &--invalid,
+  &--complete {
+    &.card-cvc::after,
+    &.card-number::after { display: none; }
+  }
+
+  &--focus { box-shadow: 0 0 0 2px $em-color-gray-100; }
+  + .form__validation-error-message { display: none; }
+
+  &--complete {
+    border-color: $em-color-success;
+
+    ~ label.form__label {
+      @include float-label(scaled);
+
+      &::after { @include transform(scale(1) rotate(42deg) translateY(-50%)); }
+    }
+  }
+
+  &--invalid {
+    border-color: $em-color-error;
+
+    ~ .form__validation-error-message { display: block; }
+
+    ~ label.form__label {
+      @include float-label(scaled);
+      height: calc(100% - 3.5rem);
+
+      &::before { @include transform(scale(1) translateY(-50%)); }
+    }
+  }
+}
+/* stylelint-enable selector-class-pattern, selector-no-qualifying-type */

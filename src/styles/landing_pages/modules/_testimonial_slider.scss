@@ -1,0 +1,92 @@
+.testimonial-slider {
+  $slides-quantity: 25;
+  $slider-width: calc(100% * #{$slides-quantity + 1});
+  $slide-width: calc(100% / #{$slides-quantity + 1});
+
+  background: $em-color-gray-100;
+
+  &__slider {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .slider {
+    &__image {
+      @include border-radius(50%);
+      border: 2px solid $em-color-light;
+      margin-bottom: 2rem;
+    }
+
+    &__inner {
+      @include transition(margin-left .25s linear);
+      overflow: hidden;
+      position: relative;
+      width: $slider-width;
+
+      &:hover { animation-play-state: paused; }
+    }
+
+    &__item {
+      @include transition(margin-left 2s linear);
+      align-items: center;
+      float: left;
+      position: relative;
+      width: $slide-width;
+    }
+
+    &__text {
+      font-size: 1.8rem;
+      line-height: 1.5;
+      margin: 0;
+      text-align: justify;
+    }
+
+    &__author {
+      font-size: 1.8rem;
+      font-weight: $em-font-weight-semi-bold;
+      line-height: 1.4;
+      margin-bottom: 0;
+    }
+
+    &__navigation {
+      @include transform(rotate(-46deg));
+      border-left: 3px solid $em-color-primary;
+      border-top: 3px solid $em-color-primary;
+      cursor: pointer;
+      display: none;
+      height: 3rem;
+      left: 2%;
+      overflow: hidden;
+      position: absolute;
+      top: 23%;
+      width: 3rem;
+
+      &:hover { z-index: 1; }
+    }
+
+    &__control {
+      @include checkbox-toggler;
+
+      @for $i from 1 through $slides-quantity {
+        &:nth-of-type(#{$i}):checked {
+          ~ .slider__inner { margin-left: 100% * (-$i + 1); }
+        }
+
+        &:last-of-type:checked ~ label:first-of-type,
+        &:nth-of-type(#{$i}):checked ~ label:nth-of-type(#{$i + 1}) {
+          @include transform(rotate(136deg));
+          display: block;
+          left: auto;
+          right: 2%;
+        }
+
+        &:first-of-type:checked ~ label:last-of-type,
+        &:nth-of-type(#{$i}):checked ~ label:nth-of-type(#{$i - 1}) {
+          @include transform(rotate(-46deg));
+          display: block;
+          left: 2%;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,122 @@
+.upcoming {
+  &__title {
+    color: $black;
+    font-size: 3.6rem;
+    font-weight: $em-font-weight-regular;
+    margin: 0 0 4.5rem;
+  }
+
+  .course {
+    &__img {
+      @include object-fit(cover);
+      height: 17.5rem;
+      width: auto;
+    }
+
+    &__content { min-height: 12.3rem; }
+    &__paragraph { font-size: 1.6rem; }
+
+    &__text {
+      font-weight: $em-font-weight-regular;
+      padding: 2rem 1.5rem 2.5rem;
+    }
+
+    &__mark {
+      color: $em-color-gray-500;
+      margin-bottom: 0;
+    }
+
+    &__list {
+      margin: 0;
+      padding: 0;
+
+      &__item {
+        color: $em-color-gray-500;
+        display: inline;
+        font-size: 1.4rem;
+        font-weight: $em-font-weight-semi-bold;
+        margin: 0 auto;
+
+        &::before { display: none; }
+      }
+    }
+  }
+
+  &__slider {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  &__column { flex-shrink: 0; }
+
+  &__courses {
+    @include transition(left .25s linear);
+    padding-bottom: 2rem;
+    position: relative;
+    width: 100%;
+
+    @include media-breakpoint-down(md) { margin: 0; }
+  }
+
+  &__course {
+    background: $em-color-gray-100;
+    border: 1px solid $em-color-gray-200;
+    height: 100%;
+    min-height: 50rem;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__navigation {
+    @include border-radius(3rem);
+    @include user-select(none);
+    @include transition(background .2s ease);
+    align-items: center;
+    background: $em-color-gray-100;
+    cursor: pointer;
+    display: inline-flex;
+    height: 1rem;
+    justify-content: center;
+    margin: .5rem .7rem;
+    position: relative;
+    text-decoration: none;
+    width: 1rem;
+
+    &:hover {
+      background: $em-color-gray-200;
+      z-index: 1;
+    }
+
+    &:nth-of-type(3) {
+      @include media-breakpoint-up(md) { display: none; }
+    }
+
+    @include media-breakpoint-up(lg) { display: none; }
+  }
+
+  &__control {
+    $slides-quantity: 3;
+
+    @include checkbox-toggler;
+
+    @for $i from 1 through $slides-quantity {
+      &:nth-of-type(#{$i}):checked {
+        ~ .upcoming__courses {
+          left: 100% * (-$i + 1);
+
+          /* stylelint-disable declaration-no-important */
+          @include media-breakpoint-up(lg) { left: 0 !important; }
+          /* stylelint-enable declaration-no-important */
+        }
+
+        ~ .row label:nth-of-type(#{$i}) { background: $em-color-gray-400; }
+
+        @include media-breakpoint-up(md) {
+          ~ .upcoming__courses { left: 50% * (-$i + 1); }
+        }
+      }
+    }
+  }
+}

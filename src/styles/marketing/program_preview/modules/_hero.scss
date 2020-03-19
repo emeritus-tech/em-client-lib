@@ -1,0 +1,12 @@
+.hero {
+  padding: 0;
+
+  &__background {
+    @include object-fit(contain);
+
+    @include media-breakpoint-up(md) {
+      @include object-fit(cover);
+      height: 40rem;
+    }
+  }
+}

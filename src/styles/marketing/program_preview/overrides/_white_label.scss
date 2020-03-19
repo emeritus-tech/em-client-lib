@@ -1,0 +1,11 @@
+/* --------------------------------------------------------------
+  Manage style colors for each Free Preview University theme
+-------------------------------------------------------------- */
+&--white-label {
+  .main-header {
+    .row { flex-direction: row-reverse; }
+
+    &__emeritus { display: none; }
+    &__university { float: left; }
+  }
+}

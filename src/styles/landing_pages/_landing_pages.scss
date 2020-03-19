@@ -1,0 +1,77 @@
+@import "landing_pages/base/layout";
+
+.landing-page {
+  //----------------------------------*\
+  // BASE
+  //----------------------------------*/
+
+  @import "landing_pages/base/typography";
+
+  //----------------------------------*\
+  // COMPONENTS
+  //----------------------------------*/
+
+  @import "landing_pages/components/buttons";
+  @import "landing_pages/components/forms";
+
+  //----------------------------------*\
+  // MODULES
+  //----------------------------------*/
+
+  @import "landing_pages/modules/apply";
+  @import "landing_pages/modules/enrollment_steps";
+  @import "landing_pages/modules/hero";
+  @import "landing_pages/modules/certificate";
+  @import "landing_pages/modules/banner";
+  @import "landing_pages/modules/information";
+  @import "landing_pages/modules/faculty";
+  @import "landing_pages/modules/journey";
+  @import "landing_pages/modules/modal";
+  @import "landing_pages/modules/reviews";
+  @import "landing_pages/modules/testimonial_slider";
+  @import "landing_pages/modules/case_studies";
+  @import "landing_pages/modules/upcoming";
+  @import "landing_pages/modules/video";
+  @import "landing_pages/modules/why_enroll";
+  @import "landing_pages/modules/thank-you/layout";
+  @import "landing_pages/modules/thank-you/thanks";
+  @import "landing_pages/modules/preview_bar";
+
+  &.landing-page {
+    &--digital-strategies {
+      @import "landing_pages/pages/digital_strategies/base/typography";
+      @import "landing_pages/pages/digital_strategies/components/buttons";
+      @import "landing_pages/pages/digital_strategies/components/forms";
+      @import "landing_pages/pages/digital_strategies/modules/apply";
+      @import "landing_pages/pages/digital_strategies/modules/banner";
+      @import "landing_pages/pages/digital_strategies/modules/case_studies";
+      @import "landing_pages/pages/digital_strategies/modules/enrollment_steps";
+      @import "landing_pages/pages/digital_strategies/modules/faculty";
+      @import "landing_pages/pages/digital_strategies/modules/hero";
+      @import "landing_pages/pages/digital_strategies/modules/information";
+      @import "landing_pages/pages/digital_strategies/modules/journey";
+      @import "landing_pages/pages/digital_strategies/modules/modal";
+      @import "landing_pages/pages/digital_strategies/modules/reviews";
+      @import "landing_pages/pages/digital_strategies/modules/testimonial_slider";
+      @import "landing_pages/pages/digital_strategies/modules/thanks";
+      @import "landing_pages/pages/digital_strategies/modules/preview_bar";
+    }
+    &--digital-marketing {
+      @import "landing_pages/pages/digital_marketing/base/typography";
+      @import "landing_pages/pages/digital_marketing/components/buttons";
+      @import "landing_pages/pages/digital_marketing/components/forms";
+      @import "landing_pages/pages/digital_marketing/modules/apply";
+      @import "landing_pages/pages/digital_marketing/modules/banner";
+      @import "landing_pages/pages/digital_marketing/modules/case_studies";
+      @import "landing_pages/pages/digital_marketing/modules/enrollment_steps";
+      @import "landing_pages/pages/digital_marketing/modules/faculty";
+      @import "landing_pages/pages/digital_marketing/modules/hero";
+      @import "landing_pages/pages/digital_marketing/modules/information";
+      @import "landing_pages/pages/digital_marketing/modules/journey";
+      @import "landing_pages/pages/digital_marketing/modules/modal";
+      @import "landing_pages/pages/digital_marketing/modules/reviews";
+      @import "landing_pages/pages/digital_marketing/modules/testimonial_slider";
+      @import "landing_pages/pages/digital_marketing/modules/thanks";
+    }
+  }
+}

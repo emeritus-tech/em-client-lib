@@ -1,0 +1,58 @@
+.case-studies {
+
+  &__paragraph { font-size: 2rem; }
+  &__container { margin-bottom: 3rem; }
+
+  &__case {
+    @include border-radius(2rem);
+    background: $em-color-primary;
+    border: 1px solid $em-color-primary;
+    color: $em-color-light;
+    font-weight: $em-font-weight-light;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  &__img {
+    @include object-fit(cover);
+    height: 19rem;
+    margin: 0;
+  }
+
+  &__text {
+    font-weight: $em-font-weight-regular;
+    padding: 1.2rem 2rem 2rem;
+  }
+
+  &__load-more-link {
+    color: $em-color-primary;
+    cursor: pointer;
+    display: block;
+    font-size: 1.4rem;
+    font-weight: $em-font-weight-semi-bold;
+    padding: 0 1.5rem 0 3rem;
+    text-align: right;
+  }
+
+  &__load-more {
+    @include checkbox-toggler;
+
+    &:checked {
+      ~ .case-studies__row {
+        max-height: 200rem;
+      }
+
+      ~ .case-studies__load-more-link { display: none; }
+    }
+  }
+
+  &__row {
+    @include transition(max-height 1s ease-in-out);
+    height: 100%;
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+
+    &:first-of-type { max-height: 200rem; }
+  }
+}
